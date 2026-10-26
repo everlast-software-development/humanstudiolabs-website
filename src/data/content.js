@@ -10,19 +10,23 @@ export const IMAGES = {
   neonXray: img('neon-xray'),
   bodyXray: img('body-xray'),
   evolvingHologram: img('evolving-hologram'),
+  aboutLabs: img('about-human-studio-labs'),
+  innovationModel: img('innovation-model'),
+  specializedProducts: img('specialized-products'),
+  solutionsHero: img('solutions-hero'),
 }
 
 export const BRAND = {
   name: 'Human Studio Labs',
   tagline: 'Intelligence built around human needs.',
-  email: 'hello@humanstudiolabs.com',
+  email: 'info@humanstudiolabs.com',
   site: 'humanstudiolabs.com',
   logo: '/images/logo.webp',
   icon: '/images/icon.webp',
 }
 
 export const NAV = [
-  { label: 'Solutions', to: '/#solutions' },
+  { label: 'Solutions', to: '/solutions' },
   { label: 'About', to: '/about' },
   { label: 'Responsible AI', to: '/responsible-ai' },
   { label: 'Partnerships', to: '/partnerships' },
@@ -62,12 +66,13 @@ export const EVOLVING = {
 export const PATHWAYS = {
   label: 'One innovation vision. Four specialized solution areas.',
   title: 'Four Pathways to a More Intelligent Healthcare Future.',
-  image: { src: IMAGES.headScan, alt: 'A glowing medical scan of a human head', pos: '62% 45%' },
+  image: { src: '/images/four-pathways.webp', alt: 'A clinician exploring a digital model of the human body on a large screen', pos: '58% 45%' },
 }
 
 export const SOLUTIONS = [
   {
     id: 'medical-operating-systems', n: '01', name: 'Medical Operating Systems', image: IMAGES.headScan, pos: '62% 45%',
+    heroImage: { src: '/images/medical-operating-systems.webp', alt: 'A doctor working on a smart surface in a hospital operating room', pos: '50% 62%' },
     tagline: 'The intelligence behind healthcare operations.',
     home: [
       'A connected digital foundation for clinics, medical centres, hospitals, and healthcare organizations.',
@@ -100,6 +105,7 @@ export const SOLUTIONS = [
   },
   {
     id: 'medical-training', n: '02', name: 'Medical Training', image: IMAGES.portraitLight, pos: '55% 40%',
+    heroImage: { src: '/images/medical-training.webp', alt: 'A person interacting with a digital model of the human body', pos: '55% 40%' },
     tagline: 'Advancing expertise through intelligent learning.',
     home: [
       'Medical knowledge continues to expand. Learning experiences must keep pace.',
@@ -132,6 +138,7 @@ export const SOLUTIONS = [
   },
   {
     id: 'medical-research', n: '03', name: 'Medical Research', image: IMAGES.neonXray, pos: '48% 40%',
+    heroImage: { src: '/images/medical-research.webp', alt: 'A doctor analysing medical scans on large screens', pos: '70% 30%' },
     tagline: 'Supporting the pursuit of medical knowledge.',
     home: [
       'Progress in medicine depends on the ability to find relevant evidence, understand scientific literature, and investigate meaningful questions.',
@@ -163,6 +170,7 @@ export const SOLUTIONS = [
   },
   {
     id: 'medical-advisory', n: '04', name: 'Medical Advisory', image: IMAGES.portraitBlue, pos: '50% 30%',
+    heroImage: { src: '/images/medical-advisory.webp', alt: 'A doctor exploring a digital patient profile', pos: '60% 45%' },
     tagline: 'Making medical knowledge more accessible and actionable.',
     home: [
       'For patients, understanding health information can be challenging. For medical professionals, navigating extensive knowledge requires time, context, and careful judgment.',
@@ -233,6 +241,7 @@ export const AUDIENCES = {
   label: 'Who we serve',
   title: 'Designed for Every Perspective in Healthcare.',
   image: { src: IMAGES.portraitLight, alt: 'A serene face with light flowing across the skin', pos: '60% 40%' },
+  video: 'https://pub-cf581317971544ca8bc920fcb6643c6c.r2.dev/Who%20we%20serve.mp4',
   items: [
     ['Healthcare institutions', 'Technology that supports operational coordination, workflow management, and informed institutional decisions.'],
     ['Medical professionals', 'Intelligent learning and knowledge-support tools that complement expertise and professional development.'],
@@ -265,7 +274,7 @@ export const CLOSING = {
 export const ABOUT = {
   label: 'About Human Studio Labs',
   title: 'An Innovation Company Built Around Human Needs.',
-  image: { src: '/images/aboutus.webp', alt: 'Human Studio Labs', pos: '50% 35%' },
+  image: { src: '/images/aboutus.webp', alt: 'Human Studio Labs', pos: '50% 35%', video: 'https://pub-cf581317971544ca8bc920fcb6643c6c.r2.dev/About%20Human%20Studio%20Labs.mp4' },
   intro: [
     'Human Studio Labs is an AI and software innovation company established to develop, own, manage, and scale intelligent digital products.',
     'Our work brings together artificial intelligence, software engineering, product strategy, and human-centered design to address challenges across healthcare and related sectors.',
@@ -299,7 +308,8 @@ export const ABOUT = {
 export const RESPONSIBLE = {
   label: 'Responsible AI',
   title: 'Innovation With Accountability.',
-  image: { src: IMAGES.neonXray, alt: '', pos: '48% 40%' },
+  image: { src: '/images/responsible-hero.webp', alt: 'A digital human profile made of circuits', pos: '50% 30%' },
+  homeImage: { src: '/images/responsible-ai.webp', alt: 'A doctor working with a digital model of the human body', pos: '40% 35%' },
   intro: [
     'In healthcare, intelligent technology must be designed with an understanding of both its potential and its limitations.',
     'Human Studio Labs approaches responsible AI as an integral part of product development, not as a statement added after the technology has been built.',
@@ -323,7 +333,7 @@ export const RESPONSIBLE = {
 export const PARTNERSHIPS = {
   label: 'Enterprise Solutions & Partnerships',
   title: 'Technology Shaped Around Your Organization.',
-  image: { src: IMAGES.headScan, alt: '', pos: '62% 45%' },
+  image: { src: '/images/partnerships.webp', alt: 'A team meeting around an interactive digital table overlooking a city skyline', pos: '50% 56%' },
   intro: [
     'Every healthcare organization has its own operational environment, priorities, systems, and challenges.',
     'Human Studio Labs works to understand these requirements before defining the appropriate technology approach.',
@@ -348,7 +358,7 @@ export const PARTNERSHIPS = {
 export const CONTACT = {
   label: 'Contact',
   title: 'Start With a Challenge Worth Solving.',
-  image: { src: IMAGES.headScan, alt: '', pos: '72% 40%' },
+  image: { src: '/images/contact-us.webp', alt: 'A human and a digital profile in conversation', pos: '70% 40%' },
   text: [
     'Tell us about your organization, your objectives, and the challenge you want to address.',
     'Our team can explore the appropriate solution area, discuss potential approaches, and identify the next steps for a productive conversation.',

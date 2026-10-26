@@ -6,7 +6,7 @@ import { PageHero, CtaBand } from '../components/Blocks'
 export default function ResponsibleAI() {
   return (
     <main>
-      <PageHero crumb="Responsible AI" title={RESPONSIBLE.title} lead={RESPONSIBLE.intro[0]} image={RESPONSIBLE.image} />
+      <PageHero crumb="Responsible AI" className="ph-soft" title={RESPONSIBLE.title} lead={RESPONSIBLE.intro[0]} image={RESPONSIBLE.image} />
 
       {/* like homepage section 04: numbered rows left, image right */}
       <Section tone="light" aria-labelledby="r1">
@@ -14,7 +14,7 @@ export default function ResponsibleAI() {
           <Head label={RESPONSIBLE.label} title={RESPONSIBLE.areasIntro} intro={RESPONSIBLE.intro[1]} titleId="r1" />
           <div className="g3">
             <div className="span2 rv"><Rows items={RESPONSIBLE.areas} /></div>
-            <div className="rv d1"><Media src={IMAGES.portraitLight} pos="58% 40%" /></div>
+            <div className="rv d1"><Media src="/images/our-approach.webp" alt="A woman's face analysed by a digital interface" pos="45% 40%" /></div>
           </div>
         </div>
       </Section>
@@ -24,7 +24,7 @@ export default function ResponsibleAI() {
         <div className="wrap">
           <Head label="Tailored to each solution" title="Accountability by design." titleId="r2" />
           <div className="g3">
-            <div className="rv"><Media src={IMAGES.headScan} pos="62% 45%" /></div>
+            <div className="rv"><Media src={IMAGES.headScan} pos="62% 45%" video="https://pub-cf581317971544ca8bc920fcb6643c6c.r2.dev/Tailored%20to%20each%20solution.mp4" videoPos="50% 50%" /></div>
             <div className="span2 rv d1"><Prose paras={RESPONSIBLE.closing} lead /></div>
           </div>
         </div>

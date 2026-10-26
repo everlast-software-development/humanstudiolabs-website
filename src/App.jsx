@@ -4,13 +4,14 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Solution from './pages/Solution'
+import Solutions from './pages/Solutions'
 import About from './pages/About'
 import ResponsibleAI from './pages/ResponsibleAI'
 import Partnerships from './pages/Partnerships'
 import Contact from './pages/Contact'
 import { SOLUTIONS, BRAND } from './data/content'
 
-const TITLES = { '/': `${BRAND.name} — Intelligence for the Next Era of Healthcare`, '/about': `About — ${BRAND.name}`, '/responsible-ai': `Responsible AI — ${BRAND.name}`, '/partnerships': `Partnerships — ${BRAND.name}`, '/contact': `Contact — ${BRAND.name}` }
+const TITLES = { '/': `${BRAND.name} — Intelligence for the Next Era of Healthcare`, '/about': `About — ${BRAND.name}`, '/responsible-ai': `Responsible AI — ${BRAND.name}`, '/partnerships': `Partnerships — ${BRAND.name}`, '/contact': `Contact — ${BRAND.name}`, '/solutions': `Solutions — ${BRAND.name}` }
 
 // Page title, and scroll to the top (or to a #section) on every navigation.
 function RouteEffects() {
@@ -26,11 +27,12 @@ function RouteEffects() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <RouteEffects />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/solutions" element={<Solutions />} />
         <Route path="/solutions/:id" element={<Solution />} />
         <Route path="/about" element={<About />} />
         <Route path="/responsible-ai" element={<ResponsibleAI />} />

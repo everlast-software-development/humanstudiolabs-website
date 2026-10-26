@@ -3,11 +3,16 @@ import { BRAND } from '../data/content'
 
 // Page hero for inner pages: text in column 1, image across columns 2–3 to the screen edge.
 // Cinematic page hero shared by all inner pages (same style as the homepage hero, shorter).
-export function PageHero({ crumb, label, title, lead, image, children }) {
+// image.video (optional): muted looping background clip, with image.src as its poster; visitors who
+// prefer reduced motion keep the still image.
+export function PageHero({ crumb, label, title, lead, image, className = '', children }) {
+  const video = image.video && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return (
-    <section className="ph" aria-labelledby="page-title">
+    <section className={`ph ${className}`} aria-labelledby="page-title">
       <div className="ph-bg" aria-hidden="true">
-        <img src={image.src} alt="" style={{ objectPosition: image.pos }} />
+        {video
+          ? <video src={image.video} poster={image.src} autoPlay muted loop playsInline preload="auto" style={{ objectPosition: image.pos }} />
+          : <img src={image.src} alt="" style={{ objectPosition: image.pos }} />}
       </div>
       <div className="lines" aria-hidden="true"><span /><span /><span /></div>
       <div className="ph-content">

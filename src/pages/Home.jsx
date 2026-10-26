@@ -50,7 +50,7 @@ export default function Home() {
         <div className="wrap">
           <Head label={AUDIENCES.label} title={AUDIENCES.title} titleId="h5" />
           <div className="g3">
-            <div className="rv"><Media {...AUDIENCES.image} /></div>
+            <div className="rv"><Media {...AUDIENCES.image} video={AUDIENCES.video} /></div>
             <div className="span2 rv d1"><Rows items={AUDIENCES.items} /></div>
           </div>
         </div>
@@ -73,7 +73,7 @@ export default function Home() {
           <Head label={RESPONSIBLE.label} title={RESPONSIBLE.title} intro={RESPONSIBLE.intro[1]} titleId="h7" />
           <div className="g3">
             <div className="span2 rv"><Rows items={RESPONSIBLE.areas} /></div>
-            <div className="rv d1"><Media {...RESPONSIBLE.image} /><div className="ctas" style={{ marginTop: 18 }}><Button to="/responsible-ai" variant="line">Responsible AI</Button></div></div>
+            <div className="rv d1"><Media {...RESPONSIBLE.homeImage} /><div className="ctas" style={{ marginTop: 18 }}><Button to="/responsible-ai" variant="line">Responsible AI</Button></div></div>
           </div>
         </div>
       </Section>

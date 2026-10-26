@@ -49,10 +49,15 @@ export function Button({ to, variant = 'solid', className = '', children, ...res
   return <SmartLink to={to} className={`btn ${variant} ${className}`} {...rest}>{children}<i aria-hidden="true">→</i></SmartLink>
 }
 
-export function Media({ src, alt = '', pos, contain, style }) {
+// video: optional muted, looping clip shown instead of the image (the image is its poster, and is
+// shown on its own for visitors who prefer reduced motion).
+export function Media({ src, alt = '', pos, contain, style, video, videoPos }) {
+  const still = !video || window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return (
     <div className="media" style={style}>
-      <img src={src} alt={alt} loading="lazy" style={{ objectPosition: pos, ...(contain ? { objectFit: 'contain', paddingTop: '8%' } : {}) }} />
+      {still
+        ? <img src={src} alt={alt} loading="lazy" style={{ objectPosition: pos, ...(contain ? { objectFit: 'contain', paddingTop: '8%' } : {}) }} />
+        : <video src={video} poster={src} autoPlay muted loop playsInline preload="metadata" aria-label={alt || undefined} style={{ objectPosition: videoPos || pos }} />}
     </div>
   )
 }

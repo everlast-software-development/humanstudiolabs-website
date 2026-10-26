@@ -49,5 +49,22 @@ so the host must send every address to `index.html`:
 
 ## Before launch
 - Replace the images in `public/images/` with licensed versions.
-- Set the real email address in `BRAND.email` (`src/data/content.js`).
-- The contact form currently opens the visitor's email app; connect it to a form service or backend if you want enquiries delivered automatically.
+- Fill in `.env` (see **Contact form** below) so enquiries are delivered.
+
+## Contact form
+The form on `/contact` posts to `/api/contact`, a small Node server (`server/index.js`) that emails each
+enquiry to `EMAIL_TO` with the visitor's address as Reply-To.
+
+1. Copy `.env.example` to `.env` and fill in your SMTP settings (host, port, user, password).
+   `.env` is ignored by git — never commit it or put credentials anywhere in `src/`.
+2. Development — run these in two terminals:
+   ```bash
+   npm run server   # contact-form API on http://localhost:3001
+   npm run dev      # website; /api requests are forwarded to the server
+   ```
+3. Production — on a host that supports Node.js:
+   ```bash
+   npm run build
+   npm start        # serves the built site (dist/) and /api/contact
+   ```
+   Static-only hosts (plain Netlify or Vercel static hosting) cannot run this server.

@@ -11,7 +11,7 @@ export default function Solution() {
   const contactTo = `/contact?area=${encodeURIComponent(s.name)}`
   return (
     <main key={s.id}>
-      <PageHero label={`Solution ${s.n}`} title={s.name} lead={s.pageTagline} image={{ src: s.image, pos: s.pos }}>
+      <PageHero label={`Solution ${s.n}`} title={s.name} lead={s.pageTagline} image={s.heroImage || { src: s.image, pos: s.pos }}>
         <p className="aud rv d2"><b>Audience:</b> {s.audience}</p>
         <div className="ctas rv d2"><Button to={contactTo}>{s.cta}</Button></div>
       </PageHero>

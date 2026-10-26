@@ -1,5 +1,5 @@
 import { ABOUT, ECOSYSTEM, CLOSING, IMAGES } from '../data/content'
-import { Section, Head, Media, Rows, Tiles, Prose, bodyGradient } from '../components/ui'
+import { Section, Head, Media, Rows, Tiles, Prose } from '../components/ui'
 import { PageHero, CtaBand } from '../components/Blocks'
 
 // About page: the same blocks as the homepage (section head, image + text, 2×2 tiles,
@@ -14,7 +14,7 @@ export default function About() {
         <div className="wrap">
           <Head label={ABOUT.label} title={ABOUT.philosophy.title} intro={ABOUT.intro[1]} titleId="a1" />
           <div className="g3">
-            <div className="rv"><Media src={IMAGES.headScan} pos="62% 45%" /></div>
+            <div className="rv"><Media src={IMAGES.aboutLabs} alt="A visitor facing a holographic model of the human body in a futuristic innovation lab" pos="50% 52%" /></div>
             <div className="span2 rv d1"><Prose paras={[ABOUT.intro[2], ABOUT.intro[3]]} lead /></div>
           </div>
         </div>
@@ -44,7 +44,7 @@ export default function About() {
           <Head label="Our Innovation Model" title="Human. Studio. Labs. Intelligence." intro={ABOUT.modelNote} titleId="a3" />
           <div className="g3">
             <div className="span2 rv"><Rows items={ABOUT.model} /></div>
-            <div className="rv d1"><Media src={IMAGES.bodyXray} contain style={bodyGradient} /></div>
+            <div className="rv d1"><Media src={IMAGES.innovationModel} alt="A digital model of the human body surrounded by medical scans and data" pos="49% 40%" /></div>
           </div>
         </div>
       </Section>
@@ -54,7 +54,7 @@ export default function About() {
         <div className="wrap">
           <Head label={ECOSYSTEM.label} title={ECOSYSTEM.title} intro={ECOSYSTEM.intro} titleId="a4" />
           <div className="g3">
-            <div className="rv"><Media src={IMAGES.portraitLight} pos="58% 40%" /></div>
+            <div className="rv"><Media src={IMAGES.specializedProducts} alt="A glowing digital human figure rising from a smartphone screen" pos="50% 12%" /></div>
             <div className="span2 rv d1"><Prose paras={ECOSYSTEM.text} /></div>
           </div>
         </div>
