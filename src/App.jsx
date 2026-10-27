@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Preloader from './components/Preloader'
 import Home from './pages/Home'
 import Solution from './pages/Solution'
 import Solutions from './pages/Solutions'
@@ -28,6 +29,7 @@ function RouteEffects() {
 export default function App() {
   return (
     <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <Preloader />
       <RouteEffects />
       <Header />
       <Routes>
