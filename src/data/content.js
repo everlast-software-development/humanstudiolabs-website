@@ -44,7 +44,7 @@ export const HERO = {
     'We build AI-powered medical systems and intelligent digital solutions designed to help healthcare institutions work more effectively, professionals advance their expertise, researchers navigate knowledge, and people better understand their health.',
     'By bringing artificial intelligence, software innovation, and human-centered design together, we turn complex healthcare challenges into practical digital capabilities.',
   ],
-  primary: { label: 'Explore Our Solutions', to: '/#solutions' },
+  primary: { label: 'Explore Our Solutions', to: '/solutions' },
   secondary: { label: 'Partner With Us', to: '/partnerships' },
   image: { src: IMAGES.portraitBlue, alt: 'A human face overlaid with points of light' },
   panelTop: { label: 'Healthcare Is Evolving', text: 'Healthcare operates at the intersection of complex information, specialized expertise, demanding workflows, and deeply human needs.', stat: '04', statLabel: 'specialized solution areas' },

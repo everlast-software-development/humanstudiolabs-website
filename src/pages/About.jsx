@@ -73,7 +73,7 @@ export default function About() {
 
       {/* closing band: identical to the homepage */}
       <CtaBand label={CLOSING.label} title={CLOSING.title} text={CLOSING.text} line={CLOSING.line} image={CLOSING.image}
-        primary={{ label: 'Explore Our Solutions', to: '/#solutions' }} secondary={{ label: 'Start a Conversation', to: '/contact' }} />
+        primary={{ label: 'Explore Our Solutions', to: '/solutions' }} secondary={{ label: 'Start a Conversation', to: '/contact' }} />
     </main>
   )
 }

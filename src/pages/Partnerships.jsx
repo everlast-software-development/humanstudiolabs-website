@@ -26,7 +26,7 @@ export default function Partnerships() {
       </Section>
 
       <CtaBand label={p.label} title={p.ctaTitle} text={p.ctaText} image={CLOSING.image}
-        primary={{ label: p.ctaLabel, to: '/contact' }} secondary={{ label: 'Explore Our Solutions', to: '/#solutions' }} />
+        primary={{ label: 'Start a Conversation', to: '/contact' }} secondary={{ label: 'Explore Our Solutions', to: '/solutions' }} />
     </main>
   )
 }

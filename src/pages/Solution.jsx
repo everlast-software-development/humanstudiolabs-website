@@ -69,7 +69,7 @@ export default function Solution() {
       </Section>
 
       <CtaBand label={s.name} title={s.cta} text={s.tagline} image={CLOSING.image}
-        primary={{ label: s.cta, to: contactTo }} secondary={{ label: `Next: ${next.name}`, to: `/solutions/${next.id}` }} />
+        primary={{ label: 'Start a Conversation', to: contactTo }} secondary={{ label: `Next: ${next.name}`, to: `/solutions/${next.id}` }} />
     </main>
   )
 }

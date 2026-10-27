@@ -32,7 +32,7 @@ export default function ResponsibleAI() {
 
       {/* closing band */}
       <CtaBand label={CLOSING.label} title={PARTNERSHIPS.ctaTitle} text={PARTNERSHIPS.ctaText} image={CLOSING.image}
-        primary={{ label: 'Start a Conversation', to: '/contact' }} secondary={{ label: 'Explore Our Solutions', to: '/#solutions' }} />
+        primary={{ label: 'Start a Conversation', to: '/contact' }} secondary={{ label: 'Explore Our Solutions', to: '/solutions' }} />
     </main>
   )
 }
