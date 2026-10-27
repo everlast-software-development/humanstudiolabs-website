@@ -351,3 +351,19 @@
 .group + .group { margin-top: 0; }
 .group + .group .tiles { border-top: 0; }
 .group + .group .group-title { padding-top: 24px; }
+
+/* dropdown items: every part stays white on hover, in every header state */
+.site-header .dd-panel .dd-item,
+.site-header .dd-panel .dd-item:hover,
+.site-header .dd-panel .dd-item:focus-visible,
+.site-header .dd-panel .dd-item b,
+.site-header .dd-panel .dd-item:hover b,
+.site-header .dd-panel .dd-item small,
+.site-header .dd-panel .dd-item:hover small { color: #fff !important; }
+.site-header .dd-panel .dd-item small { opacity: .5; }
+.site-header .dd-panel .dd-item span,
+.site-header .dd-panel .dd-item:hover span { color: rgba(255,255,255,0.68) !important; }
+.site-header .dd-panel .dd-item:hover { background: rgba(255,255,255,0.08) !important; }
+.site-header .dd-panel .dd-all,
+.site-header .dd-panel .dd-all:hover,
+.site-header .dd-panel .dd-all:focus-visible { color: #fff !important; }
