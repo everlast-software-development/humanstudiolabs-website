@@ -50,6 +50,10 @@ app.post('/api/contact', async (req, res) => {
 // in production the same server also serves the built website (dist/)
 const dist = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist')
 app.use(express.static(dist))
+// unknown API routes and missing files (anything with an extension, e.g. an old /assets/*.css after a
+// redeploy) get a real 404 instead of the page HTML; every other address is a page, handled by React
+app.all('/api/*', (req, res) => res.status(404).json({ ok: false, error: 'Not found' }))
+app.get(/\.[a-z0-9]+$/i, (req, res) => res.status(404).type('text/plain').send('Not found'))
 app.get('*', (req, res) => res.sendFile(path.join(dist, 'index.html')))
 
 app.listen(Number(PORT), () => console.log(`Server running on http://localhost:${PORT}`))
