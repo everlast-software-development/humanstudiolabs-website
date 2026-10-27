@@ -54,6 +54,16 @@ export default function Header() {
   const { pathname, hash } = useLocation()
   useEffect(() => setOpen(false), [pathname, hash])
 
+  // While the mobile drawer is open: the page behind it does not scroll, and Escape closes it.
+  useEffect(() => {
+    if (!open) return
+    const root = document.documentElement
+    root.style.overflow = 'hidden'
+    const onKey = (e) => { if (e.key === 'Escape') setOpen(false) }
+    document.addEventListener('keydown', onKey)
+    return () => { root.style.overflow = ''; document.removeEventListener('keydown', onKey) }
+  }, [open])
+
   // Transparent header with a white logo while a dark hero (homepage .hx or inner-page .ph) is behind it;
   // "scrolled" turns it into a dark frosted bar once the page moves.
   const [overHero, setOverHero] = useState(false)
@@ -75,6 +85,7 @@ export default function Header() {
   }, [pathname])
 
   return (
+    <>
     <header className={`site-header ${overHero && !open ? 'over-hero' : ''} ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="in">
         <SmartLink className="logo" to="/"><img src={BRAND.logo} alt={BRAND.name} className="logo-img" /></SmartLink>
@@ -87,15 +98,35 @@ export default function Header() {
           <button type="button" className="menu-btn" aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen((o) => !o)}>{open ? 'Close' : 'Menu'}</button>
         </div>
       </div>
-      {open && (
-        <nav className="mobile-nav" id="mobile-nav" aria-label="Mobile">
-          {NAV.flatMap((n) => [
-            <SmartLink key={n.to} to={n.to}>{n.label}</SmartLink>,
-            ...(n.label === 'Solutions' ? SOLUTIONS.map((s) => <SmartLink key={s.id} to={`/solutions/${s.id}`} className="mobile-sub">{s.n} · {s.name}</SmartLink>) : []),
-          ])}
-          <SmartLink to={HEADER_CTA.to}>{HEADER_CTA.label} →</SmartLink>
-        </nav>
-      )}
     </header>
+
+    {/* Mobile drawer: outside the header, because the header's backdrop blur would otherwise make it the
+        positioning box for these fixed elements and clip them to the header bar. */}
+    <div className={`drawer-backdrop ${open ? 'is-open' : ''}`} onClick={() => setOpen(false)} aria-hidden="true" />
+    {/* any link closes it, also one to the page you're already on (the address doesn't change then) */}
+    <aside id="mobile-nav" className={`drawer ${open ? 'is-open' : ''}`} aria-label="Mobile menu" aria-hidden={!open} inert={open ? undefined : ''}
+      onClick={(e) => { if (e.target.closest('a')) setOpen(false) }}>
+      <div className="drawer-top">
+        <SmartLink className="logo" to="/"><img src={BRAND.logo} alt={BRAND.name} className="logo-img" /></SmartLink>
+        <button type="button" className="drawer-close" onClick={() => setOpen(false)} aria-label="Close menu">✕</button>
+      </div>
+      <nav className="drawer-links" aria-label="Mobile">
+        {NAV.map((n) => (
+          <div key={n.to}>
+            <SmartLink to={n.to} className="drawer-link">{n.label}</SmartLink>
+            {n.label === 'Solutions' && (
+              <div className="drawer-sub">
+                {SOLUTIONS.map((s) => <SmartLink key={s.id} to={`/solutions/${s.id}`}>{s.n} · {s.name}</SmartLink>)}
+              </div>
+            )}
+          </div>
+        ))}
+      </nav>
+      <div className="drawer-foot">
+        <Button to={HEADER_CTA.to} className="on-dark">{HEADER_CTA.label}</Button>
+        <a className="drawer-mail" href={`mailto:${BRAND.email}`}>{BRAND.email}</a>
+      </div>
+    </aside>
+    </>
   )
 }
