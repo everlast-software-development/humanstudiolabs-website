@@ -173,8 +173,9 @@
 
 /* brand logo (header) and icon (footer) */
 .logo-img { display: block; height: 42px; width: auto; max-width: none; object-fit: contain; image-rendering: auto; }
-.site-header .logo { flex-shrink: 0; min-width: 0; }
-.site-header .logo img { flex-shrink: 0; }
+/* the logo link sits above decorative layers and always gets the click (not its image) */
+.site-header .logo { position: relative; z-index: 2; cursor: pointer; flex-shrink: 0; min-width: 0; }
+.site-header .logo img { flex-shrink: 0; pointer-events: none; }
 .footer-icon { display: inline-block; width: 20px; height: 20px; object-fit: contain; vertical-align: middle; margin-right: 10px; }
 @media (max-width: 560px) { .logo-img { height: 32px; } }
 /* the artwork is black: show it white on the navy footer */

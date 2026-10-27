@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { BRAND, NAV, HEADER_CTA, SOLUTIONS } from '../data/content'
 import { SmartLink, Button } from './ui'
 
@@ -52,7 +52,19 @@ function SolutionsMenu({ pathname }) {
 export default function Header() {
   const [open, setOpen] = useState(false)
   const { pathname, hash } = useLocation()
+  const navigate = useNavigate()
   useEffect(() => setOpen(false), [pathname, hash])
+
+  // Logo: always to the top of the homepage. On the homepage itself the address may not change, so scroll
+  // up here (and drop any #section); on other pages the link navigates and the route effect scrolls to the top.
+  const goHome = (e) => {
+    setOpen(false)
+    if (pathname === '/') {
+      e.preventDefault()
+      if (hash) navigate('/', { replace: true })
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
 
   // While the mobile drawer is open: the page behind it does not scroll, and Escape closes it.
   useEffect(() => {
@@ -88,7 +100,7 @@ export default function Header() {
     <>
     <header className={`site-header ${overHero && !open ? 'over-hero' : ''} ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="in">
-        <SmartLink className="logo" to="/"><img src={BRAND.logo} alt={BRAND.name} className="logo-img" /></SmartLink>
+        <SmartLink className="logo" to="/" aria-label={BRAND.name} onClick={goHome}><img src={BRAND.logo} alt="" className="logo-img" /></SmartLink>
         <div className="right">
           <nav aria-label="Main">
             <SolutionsMenu pathname={pathname} />
@@ -107,7 +119,7 @@ export default function Header() {
     <aside id="mobile-nav" className={`drawer ${open ? 'is-open' : ''}`} aria-label="Mobile menu" aria-hidden={!open} inert={open ? undefined : ''}
       onClick={(e) => { if (e.target.closest('a')) setOpen(false) }}>
       <div className="drawer-top">
-        <SmartLink className="logo" to="/"><img src={BRAND.logo} alt={BRAND.name} className="logo-img" /></SmartLink>
+        <SmartLink className="logo" to="/" aria-label={BRAND.name} onClick={goHome}><img src={BRAND.logo} alt="" className="logo-img" /></SmartLink>
         <button type="button" className="drawer-close" onClick={() => setOpen(false)} aria-label="Close menu">✕</button>
       </div>
       <nav className="drawer-links" aria-label="Mobile">
