@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Preloader from './components/Preloader'
+import RouteTransition from './components/RouteTransition'
 import Home from './pages/Home'
 import Solution from './pages/Solution'
 import Solutions from './pages/Solutions'
@@ -26,12 +27,20 @@ function RouteEffects() {
   return null
 }
 
+// Each page fades in when the address changes (the header and footer stay outside, so they don't move).
+function PageFade({ children }) {
+  const { pathname } = useLocation()
+  return <div key={pathname} className="page-fade">{children}</div>
+}
+
 export default function App() {
   return (
     <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Preloader />
+      <RouteTransition />
       <RouteEffects />
       <Header />
+      <PageFade>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/solutions" element={<Solutions />} />
@@ -42,6 +51,7 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Home />} />
       </Routes>
+      </PageFade>
       <Footer />
     </BrowserRouter>
   )

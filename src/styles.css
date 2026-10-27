@@ -384,3 +384,15 @@ html.is-loading, html.is-loading body { overflow: hidden; }
 html.is-loading .hx-cam, html.is-loading .hx-copy > *, html.is-loading .hx-strip,
 html.is-loading .ph-bg img, html.is-loading .ph-bg video { animation-play-state: paused !important; }
 @media (prefers-reduced-motion: reduce) { .pl-logo { animation: none; clip-path: none; } .pl.pl-out { transition: opacity .3s; clip-path: none; opacity: 0; } }
+
+/* short preloader on refresh: logo appears at once, quick lift */
+.pl.pl-short .pl-logo { animation: none; clip-path: none; opacity: 0; animation: pl-fade .25s ease forwards; }
+@keyframes pl-fade { to { opacity: 1; } }
+.pl.pl-short.pl-out { transition-duration: .6s; }
+
+/* page changes: thin top line + soft fade-in */
+.route-bar { position: fixed; z-index: 120; top: 0; left: 0; height: 2px; width: 100%; background: #fff; mix-blend-mode: difference; transform-origin: left; animation: route-bar .7s cubic-bezier(.4,0,.2,1) forwards; pointer-events: none; }
+@keyframes route-bar { 0% { transform: scaleX(0); opacity: 1; } 70% { transform: scaleX(1); opacity: 1; } 100% { transform: scaleX(1); opacity: 0; } }
+.page-fade { animation: page-fade .5s ease both; }
+@keyframes page-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .route-bar, .page-fade { animation: none; } }
