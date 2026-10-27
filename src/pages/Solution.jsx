@@ -1,7 +1,19 @@
 import { useParams, Navigate } from 'react-router-dom'
 import { SOLUTIONS, CLOSING } from '../data/content'
-import { Section, Head, Tiles, Prose, Button, SmartLink } from '../components/ui'
+import { Section, Media, Tiles, Prose, Button } from '../components/ui'
 import { PageHero, CtaBand } from '../components/Blocks'
+
+// Column 1 of each section: the label with an image under it (sticky in the capabilities section).
+function Side({ label, img, sticky }) {
+  return (
+    <div className="sol-side">
+      <div className={sticky ? 'sol-sticky' : ''}>
+        <span className="label rv">{label}</span>
+        {img && <div className="rv d1" style={{ marginTop: 26 }}><Media src={img.src} alt={img.alt || ''} pos={img.pos} /></div>}
+      </div>
+    </div>
+  )
+}
 
 export default function Solution() {
   const { id } = useParams()
@@ -9,6 +21,7 @@ export default function Solution() {
   if (i < 0) return <Navigate to="/" replace />
   const s = SOLUTIONS[i], next = SOLUTIONS[(i + 1) % SOLUTIONS.length]
   const contactTo = `/contact?area=${encodeURIComponent(s.name)}`
+  const im = s.sectionImages || {}
   return (
     <main key={s.id}>
       <PageHero label={`Solution ${s.n}`} title={s.name} lead={s.pageTagline} image={s.heroImage || { src: s.image, pos: s.pos }}>
@@ -16,34 +29,43 @@ export default function Solution() {
         <div className="ctas rv d2"><Button to={contactTo}>{s.cta}</Button></div>
       </PageHero>
 
+      {/* intro */}
       <Section tone="light" aria-labelledby="s-intro">
-        <div className="wrap">
-          <Head label={s.pageTagline} title={s.introTitle} titleId="s-intro" />
-          <div className="g3"><div /><div className="span2 rv d1"><Prose paras={[...s.home, ...s.intro]} lead /></div></div>
-        </div>
-      </Section>
-
-      <Section tone="dark" aria-labelledby="s-caps">
-        <div className="wrap">
-          <Head label="Capabilities" title={s.capsTitle} titleId="s-caps" />
-          {s.groups.map((g) => (
-            <div className="g3 group" key={g.title || 'caps'}>
-              <div className="rv">{g.title && <h3 className="group-title">{g.title}</h3>}</div>
-              <div className="span2 rv d1"><Tiles items={g.caps.map(([t, d]) => ({ title: t, text: d }))} /></div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section tone="light" aria-labelledby="s-ctx">
-        <div className="wrap">
-          <Head label="Context" title={s.contextTitle} titleId="s-ctx" />
-          <div className="g3"><div /><div className="span2 rv d1"><Prose paras={s.context} /></div></div>
-          <div className="g3 ambition">
-            <div className="rv"><span className="label">The ambition</span></div>
-            <div className="span2 rv d1"><p className="quote">{s.ambition}</p></div>
+        <div className="wrap"><div className="g3">
+          <Side label={s.pageTagline} img={im.intro} />
+          <div className="span2">
+            <h2 id="s-intro" className="sol-title rv">{s.introTitle}</h2>
+            <div className="rv d1" style={{ marginTop: 28 }}><Prose paras={[...(s.home || []), ...s.intro]} lead /></div>
           </div>
-        </div>
+        </div></div>
+      </Section>
+
+      {/* capabilities */}
+      <Section tone="dark" aria-labelledby="s-caps">
+        <div className="wrap"><div className="g3">
+          <Side label="Capabilities" img={im.caps} sticky />
+          <div className="span2">
+            <h2 id="s-caps" className="sol-title rv">{s.capsTitle}</h2>
+            {s.groups.map((g) => (
+              <div className="sol-group rv d1" key={g.title || 'caps'}>
+                {g.title && <h3 className="group-title">{g.title}</h3>}
+                <Tiles items={g.caps.map(([t, d]) => ({ title: t, text: d }))} />
+              </div>
+            ))}
+          </div>
+        </div></div>
+      </Section>
+
+      {/* context + ambition */}
+      <Section tone="light" aria-labelledby="s-ctx">
+        <div className="wrap"><div className="g3">
+          <Side label="Context" img={im.context} />
+          <div className="span2">
+            <h2 id="s-ctx" className="sol-title rv">{s.contextTitle}</h2>
+            <div className="rv d1" style={{ marginTop: 28 }}><Prose paras={s.context} /></div>
+            <div className="sol-ambition rv"><span className="label">The ambition</span><p className="quote">{s.ambition}</p></div>
+          </div>
+        </div></div>
       </Section>
 
       <CtaBand label={s.name} title={s.cta} text={s.tagline} image={CLOSING.image}

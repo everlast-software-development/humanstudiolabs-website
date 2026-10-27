@@ -139,7 +139,6 @@
 
 /* solution pages */
 .group-title { font-size: 13px; line-height: 1.4; padding-top: 24px; }
-.ambition { margin-top: clamp(56px, 7vw, 96px); padding-top: clamp(40px, 5vw, 64px); border-top: 1px solid var(--line); }
 .quote { font: 600 clamp(1.3rem, 2.4vw, 2.2rem)/1.2 var(--head); text-transform: uppercase; letter-spacing: -0.01em; max-width: 22em; }
 
 /* closing band text */
@@ -338,11 +337,6 @@
   .ph.ph-soft .ph-bg img { object-fit: cover; object-position: 82% 50% !important; }
 }
 
-/* capability groups: only one line between consecutive groups */
-.group + .group { margin-top: 0; }
-.group + .group .tiles { border-top: 0; }
-.group + .group .group-title { padding-top: 24px; }
-
 /* dropdown items: every part stays white on hover, in every header state */
 .site-header .dd-panel .dd-item,
 .site-header .dd-panel .dd-item:hover,
@@ -410,3 +404,16 @@ html.is-loading .ph-bg img, html.is-loading .ph-bg video { animation-play-state:
 .drawer-mail { font-size: 13.5px; color: rgba(255,255,255,0.7) !important; text-decoration: none; }
 @media (min-width: 961px) { .drawer, .drawer-backdrop { display: none; } }
 @media (prefers-reduced-motion: reduce) { .drawer, .drawer-backdrop { transition: none; } }
+
+/* solution pages: label + image in column 1 of every section */
+.sol-title { font-size: clamp(1.6rem, 2.9vw, 2.6rem); line-height: 1.08; max-width: 18em; }
+.sol-sticky { position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--hdr) + 24px); }
+/* sections clip their overflow; 'hidden' would also stop the sticky image from sticking, 'clip' does not */
+.sec:has(.sol-sticky) { overflow: clip; }
+.sol-group { margin-top: 36px; }
+.sol-group + .sol-group { margin-top: 48px; }
+.sol-group + .sol-group .tiles { border-top: 0; } /* only one line between consecutive groups */
+.sol-group .group-title { font-size: 13px; line-height: 1.4; margin-bottom: 16px; padding: 0; }
+.sol-ambition { margin-top: clamp(56px, 7vw, 90px); padding-top: clamp(40px, 5vw, 60px); border-top: 1px solid var(--line); }
+.sol-ambition .quote { margin-top: 16px; }
+@media (max-width: 960px) { .sol-sticky { position: static; } }

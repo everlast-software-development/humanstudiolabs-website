@@ -73,6 +73,7 @@ export const SOLUTIONS = [
   {
     id: 'medical-operating-systems', n: '01', name: 'Medical Operating Systems', image: IMAGES.headScan, pos: '62% 45%',
     heroImage: { src: '/images/medical-operating-systems.webp', alt: 'A doctor working on a smart surface in a hospital operating room', pos: '50% 62%' },
+    sectionImages: { intro: { src: IMAGES.portraitBlue, pos: '50% 28%' }, caps: { src: IMAGES.neonXray, pos: '48% 40%' }, context: { src: IMAGES.portraitLight, pos: '58% 40%' } },
     tagline: 'The intelligence behind healthcare operations.',
     home: [
       'A connected digital foundation for clinics, medical centres, hospitals, and healthcare organizations.',
@@ -106,6 +107,7 @@ export const SOLUTIONS = [
   {
     id: 'medical-training', n: '02', name: 'Medical Training', image: IMAGES.portraitLight, pos: '55% 40%',
     heroImage: { src: '/images/medical-training.webp', alt: 'A person interacting with a digital model of the human body', pos: '55% 40%' },
+    sectionImages: { intro: { src: IMAGES.portraitLight, pos: '58% 40%' }, caps: { src: IMAGES.headScan, pos: '62% 45%' }, context: { src: IMAGES.portraitBlue, pos: '50% 28%' } },
     tagline: 'Advancing expertise through intelligent learning.',
     home: [
       'Medical knowledge continues to expand. Learning experiences must keep pace.',
@@ -139,6 +141,7 @@ export const SOLUTIONS = [
   {
     id: 'medical-research', n: '03', name: 'Medical Research', image: IMAGES.neonXray, pos: '48% 40%',
     heroImage: { src: '/images/medical-research.webp', alt: 'A doctor analysing medical scans on large screens', pos: '70% 30%' },
+    sectionImages: { intro: { src: IMAGES.headScan, pos: '62% 45%' }, caps: { src: IMAGES.portraitBlue, pos: '50% 28%' }, context: { src: IMAGES.portraitLight, pos: '58% 40%' } },
     tagline: 'Supporting the pursuit of medical knowledge.',
     home: [
       'Progress in medicine depends on the ability to find relevant evidence, understand scientific literature, and investigate meaningful questions.',
@@ -171,6 +174,7 @@ export const SOLUTIONS = [
   {
     id: 'medical-advisory', n: '04', name: 'Medical Advisory', image: IMAGES.portraitBlue, pos: '50% 30%',
     heroImage: { src: '/images/medical-advisory.webp', alt: 'A doctor exploring a digital patient profile', pos: '60% 45%' },
+    sectionImages: { intro: { src: IMAGES.portraitLight, pos: '58% 40%' }, caps: { src: IMAGES.neonXray, pos: '48% 40%' }, context: { src: IMAGES.headScan, pos: '62% 45%' } },
     tagline: 'Making medical knowledge more accessible and actionable.',
     home: [
       'For patients, understanding health information can be challenging. For medical professionals, navigating extensive knowledge requires time, context, and careful judgment.',
