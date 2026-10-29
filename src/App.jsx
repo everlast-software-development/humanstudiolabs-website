@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Preloader from './components/Preloader'
 import RouteTransition from './components/RouteTransition'
+import GridLineFit from './components/GridLineFit'
 import Home from './pages/Home'
 import Solution from './pages/Solution'
 import Solutions from './pages/Solutions'
@@ -39,6 +40,7 @@ export default function App() {
       <Preloader />
       <RouteTransition />
       <RouteEffects />
+      <GridLineFit />
       <Header />
       <PageFade>
       <Routes>

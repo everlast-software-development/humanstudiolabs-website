@@ -460,3 +460,6 @@ footer, .site-footer { font-size: 13.5px !important; }
 @media (max-width: 960px) {
   .closing .bg::after { background: rgba(11,11,12,0.82) !important; }
 }
+
+/* a grid line hidden for a whole section because it would cross content (the right edge stays) */
+.lines span.line-off { border-left-color: transparent !important; }
