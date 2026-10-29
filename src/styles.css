@@ -484,3 +484,15 @@ footer, .site-footer { font-size: 13.5px !important; }
   .hx > .hx-lines span:first-child { border-right: 1px solid rgba(255,255,255,0.14) !important; }
   .hx-g4 { grid-template-columns: 1fr !important; row-gap: 14px !important; }
 }
+
+/* homepage hero: its five lines start at the very top of the page (behind the transparent header) */
+.hx > .hx-lines { top: 0 !important; }
+/* while the header is over the homepage hero, hide the header's own vertical lines so they don't duplicate them
+   (inner pages have no .hx, so their header keeps its lines) */
+body:has(.hx) .site-header.over-hero .in,
+body:has(.hx) .site-header.over-hero .logo,
+body:has(.hx) .site-header.over-hero .right,
+body:has(.hx) .site-header.over-hero .header-btn-cell,
+body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !important; border-right-color: transparent !important; }
+/* keep the header's horizontal bottom line */
+.site-header.over-hero { border-bottom-color: rgba(255,255,255,0.14) !important; }
