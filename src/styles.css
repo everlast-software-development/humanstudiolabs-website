@@ -428,3 +428,24 @@ h1, h2, h3, h4, .logo, .label, .btn, .header-btn, .menu-btn, .dd-trigger, .rows 
 h1, h2, .cta-title, .sol-title, .quote { font-weight: 800; letter-spacing: -0.01em; }
 h3, .rows b, .tiles h3, .hx-item b, .dd-item b, .drawer-link, .group-title { font-weight: 700; }
 .label, .btn, .header-btn, .menu-btn, .rows .n, .tiles .n, .hx-item small, .dd-item small { font-weight: 600; }
+
+/* readable small text */
+/* homepage hero: label above the title and the four solutions */
+.hx-label { font-size: 14px !important; opacity: .9 !important; }
+.hx-item small { font-size: 12px !important; opacity: .7 !important; }
+.hx-item b { font-size: 12.5px !important; line-height: 1.35 !important; }
+.hx-item span { font-size: 14.5px !important; line-height: 1.45 !important; color: rgba(255,255,255,0.82) !important; }
+/* section labels "/ ... /", breadcrumbs and inner-page hero details */
+.label { font-size: 13.5px !important; }
+.ph-crumb { font-size: 13.5px !important; }
+.ph .aud { font-size: 15px !important; }
+/* numbers and names in lists and cards */
+.rows .n, .tiles .n { font-size: 12px !important; }
+.rows b, .tiles h3 { font-size: 13.5px !important; }
+.rows .d, .rows span:last-child, .tiles p { font-size: 15px !important; }
+/* header menu, dropdown and footer */
+.site-header nav a, .dd-trigger { font-size: 14px !important; }
+.dd-item b { font-size: 12.5px !important; }
+.dd-item span { font-size: 13.5px !important; }
+.contact small { font-size: 13px !important; }
+footer, .site-footer { font-size: 13.5px !important; }
