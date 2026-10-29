@@ -499,14 +499,11 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
 
 /* section 04: line between the list and the image */
 .principles .pr-media { position: relative; }
-.principles .pr-media::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; border-left: 1px solid var(--line); }
-/* section 04: continuous line between name and description inside the list */
-.principles .rows li { padding: 0 !important; align-items: stretch; }
-.principles .rows li > * { padding-top: 20px; padding-bottom: 20px; }
-.principles .rows li > span:last-child { border-left: 1px solid var(--line); padding-left: 20px; }
-.principles .rows li > .n { padding-top: 23px; } /* keeps the number's original 3px offset */
+.principles .pr-media::before {
+  content: ""; position: absolute; left: 0; bottom: 0;
+  top: calc(-1 * clamp(40px, 5vw, 64px) + 14px);   /* starts 14px below the intro text */
+  border-left: 1px solid var(--line);
+}
 @media (max-width: 960px) {
   .principles .pr-media::before { display: none; }
-  .principles .rows li > span:last-child { border-left: 0; padding-left: 0; padding-top: 0; }
-  .principles .rows li > .n, .principles .rows li > b { padding-bottom: 0; } /* stacked spacing as before */
 }
