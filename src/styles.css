@@ -501,7 +501,7 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
 .closing > .lines { z-index: 1; }
 
 /* LINE SYSTEM — numbered lists
-   (long lines: .lines + GridLineFit; content lines stay inside their content, one --cell from long lines) */
+   (long lines: .lines + GridLineFit; list and card lines are continuous and reach the vertical lines beside them) */
 
 /* numbered lists: one line between names and descriptions, from the list's top line to its bottom line */
 .rows { position: relative; }
@@ -510,19 +510,9 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
 .rows li > span:last-child { border-left: 1px solid var(--line); padding-left: 20px; }
 .rows li > .n { padding-top: 23px; }   /* keeps the number's original 3px offset */
 
-/* a full-height grid line between names and descriptions replaces the list's own line; the row lines stop
-   one --cell either side of it (GridLineFit sets .rows--on-grid and --gx, the grid line's x in the list) */
+/* a full-height grid line between names and descriptions replaces the list's own line (GridLineFit sets
+   .rows--on-grid); the row lines run straight through it */
 .rows.rows--on-grid li > :last-child { border-left-color: transparent !important; }
-.rows.rows--on-grid {
-  border-top-color: transparent;
-  background: linear-gradient(var(--line), var(--line)) left top / calc(var(--gx) - var(--cell)) 1px no-repeat border-box,
-              linear-gradient(var(--line), var(--line)) right top / calc(100% - var(--gx) - var(--cell) - 1px) 1px no-repeat border-box;
-}
-.rows.rows--on-grid li {
-  border-bottom-color: transparent;
-  background: linear-gradient(var(--line), var(--line)) left bottom / calc(var(--gx) - var(--cell)) 1px no-repeat border-box,
-              linear-gradient(var(--line), var(--line)) right bottom / calc(100% - var(--gx) - var(--cell) - 1px) 1px no-repeat border-box;
-}
 
 /* the line between a list and the image / side note next to it: on the column boundary, from the list's top
    line to its bottom line; hidden where a visible grid line already runs there (.rows--side-on-grid) */
@@ -589,4 +579,16 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
 }
 @media (max-width: 960px) {
   .hx-item + .hx-item { border-left: 0 !important; border-top: 1px solid rgba(255,255,255,0.14) !important; }
+}
+
+/* lists and card grids reach the vertical lines beside them: their lines run from the column boundary on one
+   side to the column boundary on the other (edge, grid line or side divider), the text stays where it was */
+@media (min-width: 961px) {
+  .g3 > * .rows, .g3 > * .tiles { margin-left: calc(-1 * var(--cell)); margin-right: calc(-1 * var(--cell)); }
+  .g3 > * .rows li { padding-left: var(--cell) !important; padding-right: var(--cell) !important; }
+  .g3 > * .tiles > :nth-child(odd) { padding-left: var(--cell); }
+  .g3 > * .tiles > :nth-child(even) { padding-right: var(--cell); }
+  /* the side divider is drawn by the list, which now ends exactly on the column boundary */
+  .g3 > :has(+ .split-side--right) .rows::after { left: 100%; }
+  .split-side--left + * .rows::after { left: 0; }
 }

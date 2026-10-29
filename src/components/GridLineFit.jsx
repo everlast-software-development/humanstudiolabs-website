@@ -26,10 +26,7 @@ function fit(sec) {
     const d = list.querySelector('li > :last-child')
     if (!d) return
     const x = d.getBoundingClientRect().left
-    const gx = visibleXs.find((g) => Math.abs(g - x) < 12)
-    list.classList.toggle('rows--on-grid', gx !== undefined)
-    if (gx !== undefined) list.style.setProperty('--gx', `${gx - list.getBoundingClientRect().left}px`)
-    else list.style.removeProperty('--gx')
+    list.classList.toggle('rows--on-grid', visibleXs.some((g) => Math.abs(g - x) < 12))
     // a visible grid line on the boundary to the image / side note replaces the list's side divider
     const cell = list.closest('.g3 > *'), side = cell?.parentElement.querySelector(':scope > .split-side')
     if (!side) return
