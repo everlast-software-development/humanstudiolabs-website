@@ -1,6 +1,6 @@
 import Hero from '../sections/Hero'
 import { EVOLVING, PATHWAYS, SOLUTIONS, PRINCIPLES, ECOSYSTEM, AUDIENCES, RESPONSIBLE, PERFORMANCE, PARTNERSHIPS, CLOSING } from '../data/content'
-import { Section, Head, Media, Rows, Tiles, Prose, SideNote, Button, bodyGradient } from '../components/ui'
+import { Section, Head, Media, Rows, Tiles, Prose, SideNote, Button } from '../components/ui'
 import { CtaBand } from '../components/Blocks'
 
 // Homepage in the order recommended by the content brief (01–10). Paragraphs trimmed from here
@@ -40,7 +40,7 @@ export default function Home() {
           <Head label={PRINCIPLES.label} title={PRINCIPLES.title} intro={PRINCIPLES.intro} titleId="h4" />
           <div className="g3">
             <div className="span2 rv"><Rows items={PRINCIPLES.items} /></div>
-            <div className="rv d1"><Media {...PRINCIPLES.image} contain style={bodyGradient} /></div>
+            <div className="rv d1"><Media {...PRINCIPLES.image} /></div>
           </div>
         </div>
       </Section>

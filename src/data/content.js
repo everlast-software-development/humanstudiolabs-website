@@ -218,7 +218,7 @@ export const PRINCIPLES = {
   label: 'Technology should fit the work—not force the work to fit the technology.',
   title: 'Built Around the Realities of Healthcare.',
   intro: 'We approach healthcare innovation through five connected principles.',
-  image: { src: IMAGES.bodyXray, alt: 'An X-ray style illustration of the human body' },
+  image: { src: IMAGES.bodyXray, alt: 'An X-ray style illustration of the human body', pos: '50% 30%' },
   items: [
     ['Understand the environment', 'Every solution begins with the people, processes, information, and constraints that define its intended use.'],
     ['Connect the right capabilities', 'We explore how AI, software architecture, information management, and user experience can work together to address a defined need.'],
