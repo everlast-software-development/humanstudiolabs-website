@@ -35,12 +35,12 @@ export default function Home() {
       </Section>
 
       {/* 04 Practical capabilities */}
-      <Section id="approach" tone="light" aria-labelledby="h4">
+      <Section id="approach" tone="light" className="principles" aria-labelledby="h4">
         <div className="wrap">
           <Head label={PRINCIPLES.label} title={PRINCIPLES.title} intro={PRINCIPLES.intro} titleId="h4" />
           <div className="g3">
             <div className="span2 rv"><Rows items={PRINCIPLES.items} /></div>
-            <div className="rv d1"><Media {...PRINCIPLES.image} /></div>
+            <div className="pr-media rv d1"><Media {...PRINCIPLES.image} /></div>
           </div>
         </div>
       </Section>
