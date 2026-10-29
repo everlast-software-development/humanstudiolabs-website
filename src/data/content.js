@@ -107,7 +107,7 @@ export const SOLUTIONS = [
   {
     id: 'medical-training', n: '02', name: 'Medical Training', image: IMAGES.portraitLight, pos: '55% 40%',
     heroImage: { src: '/images/medical-training.webp', alt: 'A person interacting with a digital model of the human body', pos: '55% 40%' },
-    sectionImages: { intro: { src: '/images/a-more-intelligent-approach.webp', alt: 'A more intelligent approach to lifelong medical learning', pos: '50% 40%' }, caps: { src: '/images/learning-designed.webp', alt: 'Learning that responds to the learner', pos: '50% 40%' }, context: { src: IMAGES.portraitBlue, pos: '50% 28%' } },
+    sectionImages: { intro: { src: '/images/a-more-intelligent-approach.webp', alt: 'A more intelligent approach to lifelong medical learning', pos: '50% 40%' }, caps: { src: '/images/learning-designed.webp', alt: 'Learning that responds to the learner', pos: '50% 40%' }, context: { src: '/images/technology.webp', alt: 'Technology in support of expertise', pos: '50% 40%' } },
     tagline: 'Advancing expertise through intelligent learning.',
     home: [
       'Medical knowledge continues to expand. Learning experiences must keep pace.',
