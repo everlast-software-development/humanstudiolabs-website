@@ -543,3 +543,14 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
   .rows::after { display: none !important; }
 }
 
+/* odd number of cards: the last card spans both columns, so the grid looks complete */
+.tiles > :last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  padding-right: 0 !important;
+  border-left: 0 !important;
+}
+/* keep its text the same width as the other cards (one column) */
+.tiles > :last-child:nth-child(odd) > * { max-width: calc(50% - var(--cell)); }
+@media (max-width: 960px) {
+  .tiles > :last-child:nth-child(odd) > * { max-width: none; }
+}
