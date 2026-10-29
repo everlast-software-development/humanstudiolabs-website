@@ -22,7 +22,7 @@ function fit(sec) {
 export default function GridLineFit() {
   const { pathname } = useLocation()
   useEffect(() => {
-    const all = () => document.querySelectorAll('.sec, .ph, .hx').forEach(fit)
+    const all = () => document.querySelectorAll('.sec, .ph').forEach(fit)
     let t
     const later = () => { clearTimeout(t); t = setTimeout(all, 100) }
     const ro = new ResizeObserver(later); ro.observe(document.body)

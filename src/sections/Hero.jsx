@@ -141,7 +141,7 @@ export default function Hero() {
         </div>
       </div>
       <div className="hx-shade" aria-hidden="true" />
-      <div className="lines" aria-hidden="true"><span /><span /><span /></div>
+      <div className="lines hx-lines" aria-hidden="true"><span /><span /><span /><span /></div>
       <div className="hx-body">
         <div className="wrap">
           <div className="hx-copy">

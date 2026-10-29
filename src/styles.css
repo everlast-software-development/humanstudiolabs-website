@@ -464,28 +464,23 @@ footer, .site-footer { font-size: 13.5px !important; }
 /* a grid line hidden for a whole section because it would cross content (the right edge stays) */
 .lines span.line-off { border-left-color: transparent !important; }
 
-/* hero solutions strip: four equal cells separated by their own vertical lines */
-.hx-strip { padding: 0 !important; }
-.hx-strip .wrap { padding-left: var(--gut); padding-right: var(--gut); }
-.hx-g4 { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 0 !important; padding: 0 !important; }
-.hx-item {
-  padding: 20px calc(var(--cell) + 24px) clamp(22px, 4vh, 38px) var(--cell) !important;
-  background: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
-  border: 0 !important; border-radius: 0 !important;
-}
-.hx-item + .hx-item { border-left: 1px solid rgba(255,255,255,0.14) !important; }
-.hx-item i { right: var(--cell) !important; top: 20px !important; }
-.hx-item:hover { background: rgba(255,255,255,0.04) !important; }
-
-/* mid-size screens: 2 × 2 with lines between columns and rows */
+/* homepage hero: four full-height columns of lines, aligned with the four solutions */
+.hx > .hx-lines { top: calc(env(safe-area-inset-top, 0px) + var(--hdr)); grid-template-columns: repeat(4, 1fr) !important; }
+.hx > .hx-lines span { border-left-color: rgba(255,255,255,0.14) !important; }
+.hx > .hx-lines span:last-child { border-right: 1px solid rgba(255,255,255,0.14) !important; }
+.hx-g4 { gap: 0 !important; padding: 0 !important; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+.hx-item { padding: 4px calc(var(--cell) + 22px) 4px var(--cell) !important; background: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; border: 0 !important; border-radius: 0 !important; }
+.hx-item:hover { background: none !important; }
+.hx-item i { right: var(--cell) !important; }
 @media (min-width: 961px) and (max-width: 1320px) {
-  .hx-g4 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-  .hx-item + .hx-item { border-left: 0 !important; }
-  .hx-item:nth-child(even) { border-left: 1px solid rgba(255,255,255,0.14) !important; }
-  .hx-item:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,0.14) !important; }
+  .hx > .hx-lines { grid-template-columns: repeat(2, 1fr) !important; }
+  .hx > .hx-lines span:nth-child(n+3) { display: none; }
+  .hx > .hx-lines span:nth-child(2) { border-right: 1px solid rgba(255,255,255,0.14) !important; }
+  .hx-g4 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; row-gap: 18px !important; }
 }
-/* phones: one column, lines between rows */
 @media (max-width: 960px) {
-  .hx-g4 { grid-template-columns: 1fr !important; }
-  .hx-item + .hx-item { border-left: 0 !important; border-top: 1px solid rgba(255,255,255,0.14) !important; }
+  .hx > .hx-lines { grid-template-columns: 1fr !important; }
+  .hx > .hx-lines span:not(:first-child) { display: none; }
+  .hx > .hx-lines span:first-child { border-right: 1px solid rgba(255,255,255,0.14) !important; }
+  .hx-g4 { grid-template-columns: 1fr !important; row-gap: 14px !important; }
 }
