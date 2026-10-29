@@ -417,3 +417,11 @@ html.is-loading .ph-bg img, html.is-loading .ph-bg video { animation-play-state:
 .sol-ambition { margin-top: clamp(56px, 7vw, 90px); padding-top: clamp(40px, 5vw, 60px); border-top: 1px solid var(--line); }
 .sol-ambition .quote { margin-top: 16px; }
 @media (max-width: 960px) { .sol-sticky { position: static; } }
+
+/* grid lines: keep only the outer edges, never a line through the content */
+.lines span + span { border-left: 0 !important; }
+.lines span:last-child { border-right: 1px solid var(--line) !important; }
+/* header: keep its outer edges and bottom line, remove the inner divider between logo and menu */
+.site-header .right { border-left: 0 !important; }
+/* cards in two columns: no vertical divider between the columns (spacing stays the same) */
+.tiles > *:nth-child(even) { border-left: 0; }
