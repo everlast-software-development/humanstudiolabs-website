@@ -497,54 +497,49 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
 /* keep the header's horizontal bottom line */
 .site-header.over-hero { border-bottom-color: rgba(255,255,255,0.14) !important; }
 
-/* A) line inside every numbered list, between name and description */
+/* closing band: its grid lines sit above the background image (like the page heroes), so the edges show */
+.closing > .lines { z-index: 1; }
+
+/* LINE SYSTEM — numbered lists and the closing contact strip
+   (long lines: .lines + GridLineFit; content lines stay inside their content, one --cell from long lines) */
+
+/* numbered lists: one line between names and descriptions, from the list's top line to its bottom line */
+.rows { position: relative; }
 .rows li { padding: 0 !important; align-items: stretch; }
 .rows li > * { padding-top: 20px; padding-bottom: 20px; }
 .rows li > span:last-child { border-left: 1px solid var(--line); padding-left: 20px; }
 .rows li > .n { padding-top: 23px; }   /* keeps the number's original 3px offset */
 
-/* B) line between a list and the column next to it, from below the section head */
-.split-side { position: relative; }
-.split-side::before {
-  content: ""; position: absolute; bottom: 0;
-  top: calc(-1 * clamp(40px, 5vw, 64px) + 14px);   /* starts 14px below the section intro */
-  border-left: 1px solid var(--line);
+/* a full-height grid line between names and descriptions replaces the list's own line; the row lines stop
+   one --cell either side of it (GridLineFit sets .rows--on-grid and --gx, the grid line's x in the list) */
+.rows.rows--on-grid li > :last-child { border-left-color: transparent !important; }
+.rows.rows--on-grid {
+  border-top-color: transparent;
+  background: linear-gradient(var(--line), var(--line)) left top / calc(var(--gx) - var(--cell)) 1px no-repeat border-box,
+              linear-gradient(var(--line), var(--line)) right top / calc(100% - var(--gx) - var(--cell) - 1px) 1px no-repeat border-box;
 }
-.split-side--right::before { left: 0; }    /* side column on the right: line on its left edge */
-.split-side--left::before { right: -1px; } /* side column on the left: line on the grid line at its right edge */
+.rows.rows--on-grid li {
+  border-bottom-color: transparent;
+  background: linear-gradient(var(--line), var(--line)) left bottom / calc(var(--gx) - var(--cell)) 1px no-repeat border-box,
+              linear-gradient(var(--line), var(--line)) right bottom / calc(100% - var(--gx) - var(--cell) - 1px) 1px no-repeat border-box;
+}
 
+/* the line between a list and the image / side note next to it: on the column boundary, from the list's top
+   line to its bottom line; hidden where a visible grid line already runs there (.rows--side-on-grid) */
+.g3 > :has(+ .split-side--right) .rows::after,
+.split-side--left + * .rows::after { content: ""; position: absolute; top: -1px; bottom: 0; border-left: 1px solid var(--line); }
+.g3 > :has(+ .split-side--right) .rows::after { left: calc(100% + var(--cell)); }
+.split-side--left + * .rows::after { left: calc(-1 * var(--cell)); }
+.rows.rows--side-on-grid::after { display: none; }
+
+@media (min-width: 961px) {
+  /* closing contact strip: each column has its own top line across its content (no line crosses the grid) */
+  .contact { border-top: 0; }
+  .contact > div { padding-top: 23px; background: linear-gradient(var(--on-line), var(--on-line)) var(--cell) 0 / calc(100% - 2 * var(--cell)) 1px no-repeat; }
+}
 @media (max-width: 960px) {
   .rows li > span:last-child { border-left: 0; padding-left: 0; padding-top: 0; }
   .rows li > .n, .rows li > b { padding-bottom: 0; }   /* stacked spacing as before */
-  .split-side::before { display: none; }
+  .rows::after { display: none !important; }
 }
 
-/* description column selector used by all lists */
-.rows li > :last-child { position: relative; }
-
-/* 1) extend the in-list line upwards from the first row to just below the section intro */
-.rows li:first-child > :last-child::before {
-  content: ""; position: absolute; left: -1px; bottom: 100%;
-  height: calc(clamp(40px, 5vw, 64px) - 14px + 1px);   /* same start as .split-side::before (+1px: the list's top border) */
-  border-left: 1px solid var(--line);
-}
-
-/* 2) row lines reach the side divider */
-.g3 > :has(+ .split-side--right) .rows { margin-right: calc(-1 * var(--cell)); }
-.split-side--left + * .rows { margin-left: calc(-1 * var(--cell)); }
-/* ...while the text keeps its spacing from the divider and its original column widths */
-.g3 > :has(+ .split-side--right) .rows li { padding-right: var(--cell) !important; }
-.split-side--left + * .rows li { padding-left: var(--cell) !important; }
-
-/* the side divider sits exactly on the column boundary, from below the intro to the bottom of the row */
-.split-side::before { top: calc(-1 * clamp(40px, 5vw, 64px) + 14px) !important; bottom: 0 !important; }
-
-@media (max-width: 960px) {
-  .rows li:first-child > :last-child::before { display: none; }
-  .g3 > :has(+ .split-side--right) .rows, .split-side--left + * .rows { margin: 0; }
-  .g3 > :has(+ .split-side--right) .rows li, .split-side--left + * .rows li { padding-left: 0 !important; padding-right: 0 !important; }
-}
-
-/* when a full-height grid line already separates names and descriptions, hide the in-list line */
-.rows.rows--on-grid li > :last-child { border-left-color: transparent !important; }
-.rows.rows--on-grid li:first-child > :last-child::before { display: none !important; }
