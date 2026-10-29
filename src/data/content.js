@@ -73,7 +73,7 @@ export const SOLUTIONS = [
   {
     id: 'medical-operating-systems', n: '01', name: 'Medical Operating Systems', image: IMAGES.headScan, pos: '62% 45%',
     heroImage: { src: '/images/medical-operating-systems.webp', alt: 'A doctor working on a smart surface in a hospital operating room', pos: '50% 62%' },
-    sectionImages: { intro: { src: IMAGES.portraitBlue, pos: '50% 28%' }, caps: { src: IMAGES.neonXray, pos: '48% 40%' }, context: { src: IMAGES.portraitLight, pos: '58% 40%' } },
+    sectionImages: { intro: { src: '/images/a-smarter-foundation.webp', alt: 'A smarter foundation for healthcare delivery', pos: '50% 40%' }, caps: { src: IMAGES.neonXray, pos: '48% 40%' }, context: { src: IMAGES.portraitLight, pos: '58% 40%' } },
     tagline: 'The intelligence behind healthcare operations.',
     home: [
       'A connected digital foundation for clinics, medical centres, hospitals, and healthcare organizations.',
