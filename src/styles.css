@@ -566,3 +566,7 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
 @media (max-width: 960px) {
   .tiles::before { display: none; }
 }
+
+/* inner-page heroes: only the two edge lines */
+.ph > .lines span + span { border-left-color: transparent !important; }
+.ph > .lines span:last-child { border-right: 1px solid rgba(255,255,255,0.14) !important; }
