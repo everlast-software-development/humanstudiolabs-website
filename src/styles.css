@@ -497,13 +497,24 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
 /* keep the header's horizontal bottom line */
 .site-header.over-hero { border-bottom-color: rgba(255,255,255,0.14) !important; }
 
-/* section 04: line between the list and the image */
-.principles .pr-media { position: relative; }
-.principles .pr-media::before {
-  content: ""; position: absolute; left: 0; bottom: 0;
-  top: calc(-1 * clamp(40px, 5vw, 64px) + 14px);   /* starts 14px below the intro text */
+/* A) line inside every numbered list, between name and description */
+.rows li { padding: 0 !important; align-items: stretch; }
+.rows li > * { padding-top: 20px; padding-bottom: 20px; }
+.rows li > span:last-child { border-left: 1px solid var(--line); padding-left: 20px; }
+.rows li > .n { padding-top: 23px; }   /* keeps the number's original 3px offset */
+
+/* B) line between a list and the column next to it, from below the section head */
+.split-side { position: relative; }
+.split-side::before {
+  content: ""; position: absolute; bottom: 0;
+  top: calc(-1 * clamp(40px, 5vw, 64px) + 14px);   /* starts 14px below the section intro */
   border-left: 1px solid var(--line);
 }
+.split-side--right::before { left: 0; }    /* side column on the right: line on its left edge */
+.split-side--left::before { right: -1px; } /* side column on the left: line on the grid line at its right edge */
+
 @media (max-width: 960px) {
-  .principles .pr-media::before { display: none; }
+  .rows li > span:last-child { border-left: 0; padding-left: 0; padding-top: 0; }
+  .rows li > .n, .rows li > b { padding-bottom: 0; }   /* stacked spacing as before */
+  .split-side::before { display: none; }
 }

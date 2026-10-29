@@ -44,7 +44,7 @@ export default function About() {
           <Head label="Our Innovation Model" title="Human. Studio. Labs. Intelligence." intro={ABOUT.modelNote} titleId="a3" />
           <div className="g3">
             <div className="span2 rv"><Rows items={ABOUT.model} /></div>
-            <div className="rv d1"><Media src={IMAGES.innovationModel} alt="A digital model of the human body surrounded by medical scans and data" pos="49% 40%" /></div>
+            <div className="rv d1 split-side split-side--right"><Media src={IMAGES.innovationModel} alt="A digital model of the human body surrounded by medical scans and data" pos="49% 40%" /></div>
           </div>
         </div>
       </Section>

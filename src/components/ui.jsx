@@ -103,6 +103,6 @@ export function Prose({ paras, lead = false }) {
   return <div className={`prose ${lead ? 'lead-first' : ''}`}>{paras.map((p) => <p key={p}>{p}</p>)}</div>
 }
 
-export function SideNote({ label, children }) {
-  return <div className="side-note rv">{label && <span className="label">{label}</span>}{children}</div>
+export function SideNote({ label, className = '', children }) {
+  return <div className={`side-note rv ${className}`}>{label && <span className="label">{label}</span>}{children}</div>
 }

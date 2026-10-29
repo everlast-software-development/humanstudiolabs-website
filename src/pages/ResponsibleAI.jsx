@@ -14,7 +14,7 @@ export default function ResponsibleAI() {
           <Head label={RESPONSIBLE.label} title={RESPONSIBLE.areasIntro} intro={RESPONSIBLE.intro[1]} titleId="r1" />
           <div className="g3">
             <div className="span2 rv"><Rows items={RESPONSIBLE.areas} /></div>
-            <div className="rv d1"><Media src="/images/our-approach.webp" alt="A woman's face analysed by a digital interface" pos="45% 40%" /></div>
+            <div className="rv d1 split-side split-side--right"><Media src="/images/our-approach.webp" alt="A woman's face analysed by a digital interface" pos="45% 40%" /></div>
           </div>
         </div>
       </Section>

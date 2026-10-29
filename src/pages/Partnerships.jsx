@@ -19,7 +19,7 @@ export default function Partnerships() {
         <div className="wrap">
           <Head label="Process" title={p.stepsTitle} titleId="p2" />
           <div className="g3">
-            <SideNote label="Our commitment">{p.note}</SideNote>
+            <SideNote label="Our commitment" className="split-side split-side--left">{p.note}</SideNote>
             <div className="span2 rv d1"><Rows items={p.steps.map(([t, d]) => [t.replace(/^\d+\.\s*/, ''), d])} /></div>
           </div>
         </div>

@@ -40,7 +40,7 @@ export default function Home() {
           <Head label={PRINCIPLES.label} title={PRINCIPLES.title} intro={PRINCIPLES.intro} titleId="h4" />
           <div className="g3">
             <div className="span2 rv"><Rows items={PRINCIPLES.items} /></div>
-            <div className="pr-media rv d1"><Media {...PRINCIPLES.image} /></div>
+            <div className="rv d1 split-side split-side--right"><Media {...PRINCIPLES.image} /></div>
           </div>
         </div>
       </Section>
@@ -50,7 +50,7 @@ export default function Home() {
         <div className="wrap">
           <Head label={AUDIENCES.label} title={AUDIENCES.title} titleId="h5" />
           <div className="g3">
-            <div className="rv"><Media {...AUDIENCES.image} video={AUDIENCES.video} /></div>
+            <div className="rv split-side split-side--left"><Media {...AUDIENCES.image} video={AUDIENCES.video} /></div>
             <div className="span2 rv d1"><Rows items={AUDIENCES.items} /></div>
           </div>
         </div>
@@ -73,7 +73,7 @@ export default function Home() {
           <Head label={RESPONSIBLE.label} title={RESPONSIBLE.title} intro={RESPONSIBLE.intro[1]} titleId="h7" />
           <div className="g3">
             <div className="span2 rv"><Rows items={RESPONSIBLE.areas} /></div>
-            <div className="rv d1"><Media {...RESPONSIBLE.homeImage} /><div className="ctas" style={{ marginTop: 18 }}><Button to="/responsible-ai" variant="line">Responsible AI</Button></div></div>
+            <div className="rv d1 split-side split-side--right"><Media {...RESPONSIBLE.homeImage} /><div className="ctas" style={{ marginTop: 18 }}><Button to="/responsible-ai" variant="line">Responsible AI</Button></div></div>
           </div>
         </div>
       </Section>
@@ -94,7 +94,7 @@ export default function Home() {
         <div className="wrap">
           <Head label={PARTNERSHIPS.label} title={PARTNERSHIPS.title} intro={PARTNERSHIPS.intro[1]} titleId="h9" />
           <div className="g3">
-            <SideNote label={PARTNERSHIPS.stepsTitle}>{PARTNERSHIPS.note}<div className="ctas" style={{ marginTop: 24 }}><Button to="/partnerships">{PARTNERSHIPS.label}</Button></div></SideNote>
+            <SideNote label={PARTNERSHIPS.stepsTitle} className="split-side split-side--left">{PARTNERSHIPS.note}<div className="ctas" style={{ marginTop: 24 }}><Button to="/partnerships">{PARTNERSHIPS.label}</Button></div></SideNote>
             <div className="span2 rv d1"><Rows items={PARTNERSHIPS.steps.map(([t, d]) => [t.replace(/^\d+\.\s*/, ''), d])} /></div>
           </div>
         </div>
