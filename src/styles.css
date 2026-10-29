@@ -544,3 +544,7 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
   .g3 > :has(+ .split-side--right) .rows, .split-side--left + * .rows { margin: 0; }
   .g3 > :has(+ .split-side--right) .rows li, .split-side--left + * .rows li { padding-left: 0 !important; padding-right: 0 !important; }
 }
+
+/* when a full-height grid line already separates names and descriptions, hide the in-list line */
+.rows.rows--on-grid li > :last-child { border-left-color: transparent !important; }
+.rows.rows--on-grid li:first-child > :last-child::before { display: none !important; }
