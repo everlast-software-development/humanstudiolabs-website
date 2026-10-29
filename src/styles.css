@@ -554,3 +554,13 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
 @media (max-width: 960px) {
   .tiles > :last-child:nth-child(odd) > * { max-width: none; }
 }
+
+/* header: no inner vertical lines of its own on any page (the divider between logo and menu is gone) */
+.site-header .right { border-left-color: transparent !important; }
+/* over a hero (homepage or inner pages) the header shows no vertical lines at all: the hero's own lines
+   pass behind the transparent header from the very top */
+.site-header.over-hero .in,
+.site-header.over-hero .logo,
+.site-header.over-hero .right { border-left-color: transparent !important; border-right-color: transparent !important; }
+/* light header (after scrolling past the hero): only the two outer edge lines, drawn by the logo's left
+   border and the menu's right border, which sit exactly on the page edges (.in is wider than the content) */
