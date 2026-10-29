@@ -543,18 +543,6 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
   .rows::after { display: none !important; }
 }
 
-/* odd number of cards: the last card spans both columns, so the grid looks complete */
-.tiles > :last-child:nth-child(odd) {
-  grid-column: 1 / -1;
-  padding-right: 0 !important;
-  border-left: 0 !important;
-}
-/* keep its text the same width as the other cards (one column) */
-.tiles > :last-child:nth-child(odd) > * { max-width: calc(50% - var(--cell)); }
-@media (max-width: 960px) {
-  .tiles > :last-child:nth-child(odd) > * { max-width: none; }
-}
-
 /* header: no inner vertical lines of its own on any page (the divider between logo and menu is gone) */
 .site-header .right { border-left-color: transparent !important; }
 /* over a hero (homepage or inner pages) the header shows no vertical lines at all: the hero's own lines
@@ -564,3 +552,17 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
 .site-header.over-hero .right { border-left-color: transparent !important; border-right-color: transparent !important; }
 /* light header (after scrolling past the hero): only the two outer edge lines, drawn by the logo's left
    border and the menu's right border, which sit exactly on the page edges (.in is wider than the content) */
+
+/* card grids: one continuous middle divider and a full-width bottom line, for any number of cards */
+.tiles { position: relative; border-bottom: 1px solid var(--line); }
+.tiles::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; border-left: 1px solid var(--line); pointer-events: none; }
+.tiles > :nth-child(even) { border-left: 0 !important; }
+/* the grid's own bottom line replaces the bottom lines of the last row */
+.tiles > :last-child { border-bottom: 0 !important; }
+@media (min-width: 961px) {
+  /* two columns only: the left card of a full last row (on phones it keeps the line to the next card) */
+  .tiles > :nth-last-child(2):nth-child(odd) { border-bottom: 0 !important; }
+}
+@media (max-width: 960px) {
+  .tiles::before { display: none; }
+}
