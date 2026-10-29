@@ -518,3 +518,29 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
   .rows li > .n, .rows li > b { padding-bottom: 0; }   /* stacked spacing as before */
   .split-side::before { display: none; }
 }
+
+/* description column selector used by all lists */
+.rows li > :last-child { position: relative; }
+
+/* 1) extend the in-list line upwards from the first row to just below the section intro */
+.rows li:first-child > :last-child::before {
+  content: ""; position: absolute; left: -1px; bottom: 100%;
+  height: calc(clamp(40px, 5vw, 64px) - 14px + 1px);   /* same start as .split-side::before (+1px: the list's top border) */
+  border-left: 1px solid var(--line);
+}
+
+/* 2) row lines reach the side divider */
+.g3 > :has(+ .split-side--right) .rows { margin-right: calc(-1 * var(--cell)); }
+.split-side--left + * .rows { margin-left: calc(-1 * var(--cell)); }
+/* ...while the text keeps its spacing from the divider and its original column widths */
+.g3 > :has(+ .split-side--right) .rows li { padding-right: var(--cell) !important; }
+.split-side--left + * .rows li { padding-left: var(--cell) !important; }
+
+/* the side divider sits exactly on the column boundary, from below the intro to the bottom of the row */
+.split-side::before { top: calc(-1 * clamp(40px, 5vw, 64px) + 14px) !important; bottom: 0 !important; }
+
+@media (max-width: 960px) {
+  .rows li:first-child > :last-child::before { display: none; }
+  .g3 > :has(+ .split-side--right) .rows, .split-side--left + * .rows { margin: 0; }
+  .g3 > :has(+ .split-side--right) .rows li, .split-side--left + * .rows li { padding-left: 0 !important; padding-right: 0 !important; }
+}
