@@ -141,7 +141,7 @@ export const SOLUTIONS = [
   {
     id: 'medical-research', n: '03', name: 'Medical Research', image: IMAGES.neonXray, pos: '48% 40%',
     heroImage: { src: '/images/medical-research.webp', alt: 'A doctor analysing medical scans on large screens', pos: '70% 30%' },
-    sectionImages: { intro: { src: IMAGES.headScan, pos: '62% 45%' }, caps: { src: IMAGES.portraitBlue, pos: '50% 28%' }, context: { src: IMAGES.portraitLight, pos: '58% 40%' } },
+    sectionImages: { intro: { src: '/images/give-research.webp', alt: 'Giving research teams more room to investigate', pos: '50% 40%' }, caps: { src: '/images/from-information.webp', alt: 'From information to investigation', pos: '50% 40%' }, context: { src: '/images/scientific-rigor.webp', alt: 'Scientific rigor remains essential', pos: '50% 40%' } },
     tagline: 'Supporting the pursuit of medical knowledge.',
     home: [
       'Progress in medicine depends on the ability to find relevant evidence, understand scientific literature, and investigate meaningful questions.',
