@@ -174,7 +174,7 @@ export const SOLUTIONS = [
   {
     id: 'medical-advisory', n: '04', name: 'Medical Advisory', image: IMAGES.portraitBlue, pos: '50% 30%',
     heroImage: { src: '/images/medical-advisory.webp', alt: 'A doctor exploring a digital patient profile', pos: '60% 45%' },
-    sectionImages: { intro: { src: IMAGES.portraitLight, pos: '58% 40%' }, caps: { src: IMAGES.neonXray, pos: '48% 40%' }, context: { src: IMAGES.headScan, pos: '62% 45%' } },
+    sectionImages: { intro: { src: '/images/intelligent-support.webp', alt: 'Intelligent support for better-informed healthcare conversations', pos: '50% 40%' }, caps: { src: '/images/for-patients.webp', alt: 'For patients and for professionals', pos: '50% 40%' }, context: { src: '/images/human-judgment.webp', alt: 'Human judgment at the centre', pos: '50% 40%' } },
     tagline: 'Making medical knowledge more accessible and actionable.',
     home: [
       'For patients, understanding health information can be challenging. For medical professionals, navigating extensive knowledge requires time, context, and careful judgment.',
