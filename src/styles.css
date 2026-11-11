@@ -618,3 +618,30 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
 @media (prefers-reduced-motion: reduce) {
   .ph--alive .ph-bg img, .ph-sweep, .ph-dust { animation: none !important; }
 }
+
+/* About hero: the whole square image sized to the hero height and shifted right, so the face is visible,
+   the ear enters from the right edge and the dark side sits behind the title. The left edge fades into the dark.
+   (max-width: none undoes the global img cap; !important beats the inline object-position set by PageHero.) */
+.ph-about .ph-bg img {
+  position: absolute; top: -6%; right: -9%; left: auto;
+  height: 112%; width: auto !important; max-width: none; aspect-ratio: 1;
+  object-fit: cover; object-position: 50% 50% !important;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 22%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 22%);
+}
+/* gentler camera drift for this image, so the framing stays */
+.ph-about.ph--alive .ph-bg img { animation: ph-zoom-soft 3.5s cubic-bezier(.22,.7,.2,1) both, ph-drift-soft 26s ease-in-out 3.5s infinite alternate; }
+@keyframes ph-zoom-soft { from { transform: scale(1.18); } to { transform: scale(1); } }
+@keyframes ph-drift-soft {
+  0%   { transform: scale(1) translate(0, 0); }
+  50%  { transform: scale(1.03) translate(-0.6%, -0.4%); }
+  100% { transform: scale(1.015) translate(0.5%, 0.3%); }
+}
+/* phones: the face sits above the title; the image's bottom edge fades out too */
+@media (max-width: 960px) {
+  .ph-about .ph-bg img { top: 0; height: 62%; right: -22%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 22%), linear-gradient(0deg, transparent 0, #000 30%);
+    -webkit-mask-composite: source-in;
+            mask-image: linear-gradient(90deg, transparent 0, #000 22%), linear-gradient(0deg, transparent 0, #000 30%);
+            mask-composite: intersect; }
+}

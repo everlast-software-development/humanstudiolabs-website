@@ -7,7 +7,7 @@ import { PageHero, CtaBand } from '../components/Blocks'
 export default function About() {
   return (
     <main>
-      <PageHero crumb="About" title={ABOUT.title} lead={ABOUT.intro[0]} image={ABOUT.image} alive />
+      <PageHero crumb="About" title={ABOUT.title} lead={ABOUT.intro[0]} image={ABOUT.image} alive className="ph-about" />
 
       {/* like homepage section 02: image left, text right */}
       <Section tone="light" aria-labelledby="a1">
