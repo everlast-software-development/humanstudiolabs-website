@@ -595,11 +595,11 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
 
 /* "alive" page hero: slow camera drift, light sweep and floating particles (video-like) */
 .ph--alive .ph-bg { inset: -2%; }
-.ph--alive .ph-bg img { animation: ph-zoom 3.5s cubic-bezier(.22,.7,.2,1) both, ph-drift 26s ease-in-out 3.5s infinite alternate; }
+.ph--alive .ph-bg img { animation: ph-zoom 3.5s cubic-bezier(.22,.7,.2,1) both, ph-drift 9s ease-in-out 3.5s infinite alternate; }
+/* continuous zoom in and out, like a slow camera move */
 @keyframes ph-drift {
-  0%   { transform: scale(1.03) translate(0, 0); }
-  50%  { transform: scale(1.09) translate(-1.2%, -0.8%); }
-  100% { transform: scale(1.06) translate(1%, 0.6%); }
+  from { transform: scale(1) translate(0, 0); }
+  to   { transform: scale(1.16) translate(-1.5%, -1%); }
 }
 .ph-sweep { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen;
   background: linear-gradient(105deg, transparent 35%, rgba(150,205,255,0.12) 48%, transparent 60%);
