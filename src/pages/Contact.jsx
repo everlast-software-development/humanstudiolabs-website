@@ -33,7 +33,7 @@ export default function Contact() {
 
   return (
     <main>
-      <PageHero label={CONTACT.label} title={CONTACT.title} lead={CONTACT.text[0]} image={CONTACT.image} />
+      <PageHero label={CONTACT.label} title={CONTACT.title} lead={CONTACT.text[0]} image={CONTACT.image} className="ph-contact ph-blend" tone="#000214" alive />
       <Section tone="light" aria-labelledby="c1">
         <div className="wrap">
           <Head label={CONTACT.label} title={f.message} intro={CONTACT.text[1]} titleId="c1" />

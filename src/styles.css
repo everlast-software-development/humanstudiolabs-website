@@ -685,3 +685,24 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
   .media--alive img, .media-scan, .media-glow { animation: none !important; }
   .media-scan { display: none; }
 }
+
+/* Contact hero: subject moved to the right, away from the title. The whole image is sized to the hero
+   height and anchored right, so the globe (envelope, bubbles, phone) is fully visible beside the text.
+   (max-width: none undoes the global img cap; the image's shape keeps the globe uncropped.) */
+.ph-contact .ph-bg img {
+  position: absolute; top: 0; right: -6%; left: auto;
+  height: 100%; width: auto !important; max-width: none; aspect-ratio: 2752 / 1536;
+  object-fit: cover;
+}
+/* stronger darkening behind the text on the left */
+.ph-contact.ph-blend .ph-bg::after {
+  background:
+    linear-gradient(90deg, var(--ph-tone, #070B12) 0%, color-mix(in srgb, var(--ph-tone, #070B12) 92%, transparent) 30%, color-mix(in srgb, var(--ph-tone, #070B12) 55%, transparent) 55%, transparent 78%),
+    linear-gradient(0deg, color-mix(in srgb, var(--ph-tone, #070B12) 85%, transparent) 0%, transparent 35%) !important;
+}
+/* gentle drift that keeps the framing */
+.ph-contact.ph--alive .ph-bg img { animation: ph-zoom-soft 3.5s cubic-bezier(.22,.7,.2,1) both, ph-drift-soft 26s ease-in-out 3.5s infinite alternate; }
+/* phones: the globe sits above the title */
+@media (max-width: 960px) {
+  .ph-contact .ph-bg img { height: 62%; right: -25%; }
+}
