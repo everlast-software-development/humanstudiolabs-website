@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { Section, Button, SmartLink } from './ui'
 import { BRAND } from '../data/content'
 
@@ -5,14 +6,27 @@ import { BRAND } from '../data/content'
 // Cinematic page hero shared by all inner pages (same style as the homepage hero, shorter).
 // image.video (optional): muted looping background clip, with image.src as its poster; visitors who
 // prefer reduced motion keep the still image.
-export function PageHero({ crumb, label, title, lead, image, className = '', children }) {
+// alive: the still image gets a slow drift, a light sweep, floating particles and a gentle mouse parallax.
+export function PageHero({ crumb, label, title, lead, image, className = '', alive = false, children }) {
   const video = image.video && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const bgRef = useRef(null)
+  useEffect(() => {
+    // desktop only (fine pointer), and never for visitors who prefer reduced motion
+    if (!alive || window.matchMedia('(prefers-reduced-motion: reduce)').matches || !window.matchMedia('(pointer: fine)').matches) return
+    let raf = 0, tx = 0, ty = 0, cx = 0, cy = 0
+    const onMove = (e) => { tx = (e.clientX / window.innerWidth - 0.5) * 14; ty = (e.clientY / window.innerHeight - 0.5) * 10 }
+    const tick = () => { cx += (tx - cx) * 0.05; cy += (ty - cy) * 0.05; if (bgRef.current) bgRef.current.style.translate = `${-cx}px ${-cy}px`; raf = requestAnimationFrame(tick) }
+    window.addEventListener('pointermove', onMove); raf = requestAnimationFrame(tick)
+    return () => { window.removeEventListener('pointermove', onMove); cancelAnimationFrame(raf) }
+  }, [alive])
   return (
-    <section className={`ph ${className}`} aria-labelledby="page-title">
-      <div className="ph-bg" aria-hidden="true">
+    <section className={`ph ${alive ? 'ph--alive ' : ''}${className}`} aria-labelledby="page-title">
+      <div className="ph-bg" aria-hidden="true" ref={bgRef}>
         {video
           ? <video src={image.video} poster={image.src} autoPlay muted loop playsInline preload="auto" style={{ objectPosition: image.pos }} />
           : <img src={image.src} alt="" style={{ objectPosition: image.pos }} />}
+        {alive && <div className="ph-sweep" aria-hidden="true" />}
+        {alive && <div className="ph-dust" aria-hidden="true" />}
       </div>
       <div className="lines" aria-hidden="true"><span /><span /><span /></div>
       <div className="ph-content">

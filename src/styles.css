@@ -592,3 +592,29 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
   .g3 > :has(+ .split-side--right) .rows::after { left: 100%; }
   .split-side--left + * .rows::after { left: 0; }
 }
+
+/* "alive" page hero: slow camera drift, light sweep and floating particles (video-like) */
+.ph--alive .ph-bg { inset: -2%; }
+.ph--alive .ph-bg img { animation: ph-zoom 3.5s cubic-bezier(.22,.7,.2,1) both, ph-drift 26s ease-in-out 3.5s infinite alternate; }
+@keyframes ph-drift {
+  0%   { transform: scale(1.03) translate(0, 0); }
+  50%  { transform: scale(1.09) translate(-1.2%, -0.8%); }
+  100% { transform: scale(1.06) translate(1%, 0.6%); }
+}
+.ph-sweep { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen;
+  background: linear-gradient(105deg, transparent 35%, rgba(150,205,255,0.12) 48%, transparent 60%);
+  background-size: 260% 100%; animation: ph-sweep 9s ease-in-out infinite; }
+@keyframes ph-sweep { 0% { background-position: 150% 0; } 60%, 100% { background-position: -60% 0; } }
+.ph-dust { position: absolute; inset: 0; pointer-events: none; opacity: .45; mix-blend-mode: screen;
+  background-image:
+    radial-gradient(rgba(180,225,255,0.85) 1px, transparent 1.6px),
+    radial-gradient(rgba(180,225,255,0.55) 1px, transparent 1.6px);
+  background-size: 140px 140px, 210px 210px;
+  background-position: 0 0, 60px 90px;
+  -webkit-mask-image: radial-gradient(ellipse at 65% 45%, #000 30%, transparent 75%);
+          mask-image: radial-gradient(ellipse at 65% 45%, #000 30%, transparent 75%);
+  animation: ph-dust 38s linear infinite; }
+@keyframes ph-dust { from { background-position: 0 0, 60px 90px; } to { background-position: 0 -700px, 60px -960px; } }
+@media (prefers-reduced-motion: reduce) {
+  .ph--alive .ph-bg img, .ph-sweep, .ph-dust { animation: none !important; }
+}

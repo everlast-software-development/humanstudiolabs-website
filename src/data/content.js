@@ -284,7 +284,7 @@ export const ABOUT = {
     model:     { src: '/images/about-innovation.webp',   alt: 'Our innovation model',                  pos: '50% 40%' },
     ecosystem: { src: '/images/about-ecosystem.webp',    alt: 'A growing intelligence ecosystem',      pos: '50% 40%' },
   },
-  image: { src: '/images/aboutus.webp', alt: 'Human Studio Labs', pos: '50% 35%', video: 'https://pub-cf581317971544ca8bc920fcb6643c6c.r2.dev/About%20Human%20Studio%20Labs.mp4' },
+  image: { src: '/images/about-hero.webp', alt: 'Human Studio Labs', pos: '50% 40%' },
   intro: [
     'Human Studio Labs is an AI and software innovation company established to develop, own, manage, and scale intelligent digital products.',
     'Our work brings together artificial intelligence, software engineering, product strategy, and human-centered design to address challenges across healthcare and related sectors.',
