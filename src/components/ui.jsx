@@ -51,13 +51,16 @@ export function Button({ to, variant = 'solid', className = '', children, ...res
 
 // video: optional muted, looping clip shown instead of the image (the image is its poster, and is
 // shown on its own for visitors who prefer reduced motion).
-export function Media({ src, alt = '', pos, contain, style, video, videoPos }) {
+// alive: the still image gets a slow drift, a scanning light line and a breathing glow (still with reduced motion).
+export function Media({ src, alt = '', pos, contain, style, video, videoPos, alive = false }) {
   const still = !video || window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return (
-    <div className="media" style={style}>
+    <div className={alive ? 'media media--alive' : 'media'} style={style}>
       {still
         ? <img src={src} alt={alt} loading="lazy" style={{ objectPosition: pos, ...(contain ? { objectFit: 'contain', paddingTop: '8%' } : {}) }} />
         : <video src={video} poster={src} autoPlay muted loop playsInline preload="metadata" aria-label={alt || undefined} style={{ objectPosition: videoPos || pos }} />}
+      {alive && <span className="media-scan" aria-hidden="true" />}
+      {alive && <span className="media-glow" aria-hidden="true" />}
     </div>
   )
 }

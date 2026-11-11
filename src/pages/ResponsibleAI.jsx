@@ -1,4 +1,4 @@
-import { RESPONSIBLE, PARTNERSHIPS, CLOSING, IMAGES } from '../data/content'
+import { RESPONSIBLE, PARTNERSHIPS, CLOSING } from '../data/content'
 import { Section, Head, Media, Rows, Prose } from '../components/ui'
 import { PageHero, CtaBand } from '../components/Blocks'
 
@@ -24,7 +24,7 @@ export default function ResponsibleAI() {
         <div className="wrap">
           <Head label="Tailored to each solution" title="Accountability by design." titleId="r2" />
           <div className="g3">
-            <div className="rv"><Media src={IMAGES.headScan} pos="62% 45%" video="https://pub-cf581317971544ca8bc920fcb6643c6c.r2.dev/Tailored%20to%20each%20solution.mp4" videoPos="50% 50%" /></div>
+            <div className="rv"><Media src="/images/tailored-to-each-solution.webp" alt="A digital human profile made of circuits" pos="40% 45%" alive /></div>
             <div className="span2 rv d1"><Prose paras={RESPONSIBLE.closing} lead /></div>
           </div>
         </div>

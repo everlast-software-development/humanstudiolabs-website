@@ -663,3 +663,25 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
     linear-gradient(90deg, var(--ph-tone, #070B12) 0%, color-mix(in srgb, var(--ph-tone, #070B12) 80%, transparent) 35%, transparent 70%),
     linear-gradient(0deg, color-mix(in srgb, var(--ph-tone, #070B12) 85%, transparent) 0%, transparent 35%) !important;
 }
+
+/* "alive" section image: slow camera drift, a scanning light line and a breathing glow */
+.media--alive img { animation: media-drift 18s ease-in-out infinite alternate !important; }
+@keyframes media-drift {
+  0%   { transform: scale(1.04) translate(0, 0); }
+  100% { transform: scale(1.11) translate(-2%, -1.5%); }
+}
+.media-scan { position: absolute; left: 0; right: 0; height: 2px; top: -5%; pointer-events: none;
+  background: rgba(170,225,255,0.95);
+  box-shadow: 0 0 16px 4px rgba(110,190,255,0.55), 0 0 60px 14px rgba(80,160,255,0.25);
+  mix-blend-mode: screen; animation: media-scan 6.5s cubic-bezier(.45,0,.25,1) infinite; }
+@keyframes media-scan {
+  0% { top: -5%; opacity: 0; } 10% { opacity: 1; } 80% { opacity: 1; } 100% { top: 105%; opacity: 0; }
+}
+.media-glow { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen;
+  background: radial-gradient(ellipse 60% 45% at 10% 50%, rgba(120,195,255,0.35), transparent 70%);
+  animation: media-glow 4.5s ease-in-out infinite; }
+@keyframes media-glow { 0%, 100% { opacity: .35; } 50% { opacity: .9; } }
+@media (prefers-reduced-motion: reduce) {
+  .media--alive img, .media-scan, .media-glow { animation: none !important; }
+  .media-scan { display: none; }
+}
