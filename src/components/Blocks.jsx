@@ -6,8 +6,9 @@ import { BRAND } from '../data/content'
 // Cinematic page hero shared by all inner pages (same style as the homepage hero, shorter).
 // image.video (optional): muted looping background clip, with image.src as its poster; visitors who
 // prefer reduced motion keep the still image.
+// tone (optional): the image's darkest edge colour, used by the "ph-blend" class as the hero background.
 // alive: the still image gets a slow drift, a light sweep, floating particles and a gentle mouse parallax.
-export function PageHero({ crumb, label, title, lead, image, className = '', alive = false, children }) {
+export function PageHero({ crumb, label, title, lead, image, className = '', alive = false, tone, children }) {
   const video = image.video && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const bgRef = useRef(null)
   useEffect(() => {
@@ -20,7 +21,7 @@ export function PageHero({ crumb, label, title, lead, image, className = '', ali
     return () => { window.removeEventListener('pointermove', onMove); cancelAnimationFrame(raf) }
   }, [alive])
   return (
-    <section className={`ph ${alive ? 'ph--alive ' : ''}${className}`} aria-labelledby="page-title">
+    <section className={`ph ${alive ? 'ph--alive ' : ''}${className}`} style={tone ? { '--ph-tone': tone } : undefined} aria-labelledby="page-title">
       <div className="ph-bg" aria-hidden="true" ref={bgRef}>
         {video
           ? <video src={image.video} poster={image.src} autoPlay muted loop playsInline preload="auto" style={{ objectPosition: image.pos }} />

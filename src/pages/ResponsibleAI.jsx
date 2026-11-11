@@ -6,7 +6,7 @@ import { PageHero, CtaBand } from '../components/Blocks'
 export default function ResponsibleAI() {
   return (
     <main>
-      <PageHero crumb="Responsible AI" className="ph-soft" title={RESPONSIBLE.title} lead={RESPONSIBLE.intro[0]} image={RESPONSIBLE.image} />
+      <PageHero crumb="Responsible AI" className="ph-soft ph-blend" tone="#000000" title={RESPONSIBLE.title} lead={RESPONSIBLE.intro[0]} image={RESPONSIBLE.image} />
 
       {/* like homepage section 04: numbered rows left, image right */}
       <Section tone="light" aria-labelledby="r1">
