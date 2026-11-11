@@ -706,3 +706,24 @@ body:has(.hx) .site-header.over-hero .in > * { border-left-color: transparent !i
 @media (max-width: 960px) {
   .ph-contact .ph-bg img { height: 62%; right: -25%; }
 }
+
+/* homepage hero framing: close-up on the face, shifted to the right
+   (the zoom origin is set in Hero.jsx on the point between the eyes) */
+.hx { --hx-zoom: 1.5; --hx-x: 6%; --hx-y: 14%; }   /* tuned at 1920x1080 and 1440x900: near eye ~66% across, ~47% down */
+.hx-cam {
+  animation: hx-zoomout-close 5s cubic-bezier(.22,.7,.2,1) both, hx-breathe-close 16s ease-in-out 5s infinite alternate !important;
+}
+@keyframes hx-zoomout-close {
+  from { transform: translate(var(--hx-x), var(--hx-y)) scale(calc(var(--hx-zoom) * 1.5)); filter: brightness(0.7); }
+  to   { transform: translate(var(--hx-x), var(--hx-y)) scale(var(--hx-zoom)); filter: none; }
+}
+@keyframes hx-breathe-close {
+  from { transform: translate(var(--hx-x), var(--hx-y)) scale(var(--hx-zoom)); }
+  to   { transform: translate(var(--hx-x), var(--hx-y)) scale(calc(var(--hx-zoom) * 1.035)); }
+}
+@media (max-width: 960px) {
+  .hx { --hx-zoom: 1.35; --hx-x: 0%; --hx-y: 6%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hx-cam { animation: none !important; transform: translate(var(--hx-x), var(--hx-y)) scale(var(--hx-zoom)); }
+}

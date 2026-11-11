@@ -10,9 +10,22 @@ export default function Hero() {
 
   useEffect(() => {
     const img = imgRef.current, cam = camRef.current, glc = glRef.current
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    let raf = 0, stopped = false
     const cleanups = []
+    // Zoom origin = the point between her eyes, found through the image's current cover mapping
+    // (object-position), so the close-up (--hx-zoom in CSS) centres on the eyes at every screen size.
+    // EYES: where the eyes are in the photo, as fractions of its width and height.
+    const EYES = [0.5, 0.33]
+    const placeOrigin = () => {
+      if (!img.naturalWidth) return
+      const W = cam.clientWidth, H = cam.clientHeight, pos = getComputedStyle(img).objectPosition.split(' ').map((v) => parseFloat(v) / 100)
+      const s = Math.max(W / img.naturalWidth, H / img.naturalHeight), w = img.naturalWidth * s, h = img.naturalHeight * s
+      cam.style.transformOrigin = `${(W - w) * pos[0] + w * EYES[0]}px ${(H - h) * pos[1] + h * EYES[1]}px`
+    }
+    if (img.complete && img.naturalWidth) placeOrigin()
+    else { img.addEventListener('load', placeOrigin, { once: true }); cleanups.push(() => img.removeEventListener('load', placeOrigin)) }
+    window.addEventListener('resize', placeOrigin); cleanups.push(() => window.removeEventListener('resize', placeOrigin))
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return () => cleanups.forEach((f) => f())
+    let raf = 0, stopped = false
 
     const run = () => {
       if (stopped) return
@@ -95,8 +108,7 @@ export default function Hero() {
         const dpr = Math.min(window.devicePixelRatio || 1, 2), W = cam.clientWidth, H = cam.clientHeight
         glc.width = Math.round(W * dpr); glc.height = Math.round(H * dpr); gl.viewport(0, 0, glc.width, glc.height)
         pos = getComputedStyle(img).objectPosition.split(' ').map((v) => parseFloat(v) / 100)
-        const s = Math.max(W / img.naturalWidth, H / img.naturalHeight), w = img.naturalWidth * s, h = img.naturalHeight * s
-        cam.style.transformOrigin = `${(W - w) * pos[0] + w * 0.5}px ${(H - h) * pos[1] + h * 0.34}px`
+        placeOrigin()
       }
       layout()
       window.addEventListener('resize', layout); cleanups.push(() => window.removeEventListener('resize', layout))
