@@ -1,4 +1,4 @@
-import { ABOUT, ECOSYSTEM, CLOSING, IMAGES } from '../data/content'
+import { ABOUT, ECOSYSTEM, CLOSING } from '../data/content'
 import { Section, Head, Media, Rows, Tiles, Prose } from '../components/ui'
 import { PageHero, CtaBand } from '../components/Blocks'
 
@@ -14,7 +14,7 @@ export default function About() {
         <div className="wrap">
           <Head label={ABOUT.label} title={ABOUT.philosophy.title} intro={ABOUT.intro[1]} titleId="a1" />
           <div className="g3">
-            <div className="rv"><Media src={IMAGES.aboutLabs} alt="A visitor facing a holographic model of the human body in a futuristic innovation lab" pos="50% 52%" /></div>
+            <div className="rv"><Media {...ABOUT.sectionImages.intro} /></div>
             <div className="span2 rv d1"><Prose paras={[ABOUT.intro[2], ABOUT.intro[3]]} lead /></div>
           </div>
         </div>
@@ -25,7 +25,7 @@ export default function About() {
         <div className="wrap">
           <Head label="Vision · Mission · Philosophy" title="Our Vision, Mission and Philosophy." titleId="a2" />
           <div className="g3">
-            <div className="rv"><Media src={IMAGES.portraitBlue} pos="50% 28%" /></div>
+            <div className="rv"><Media {...ABOUT.sectionImages.vision} /></div>
             <div className="span2 rv d1">
               <Tiles items={[
                 { title: 'Our Vision', text: ABOUT.vision },
@@ -44,7 +44,7 @@ export default function About() {
           <Head label="Our Innovation Model" title="Human. Studio. Labs. Intelligence." intro={ABOUT.modelNote} titleId="a3" />
           <div className="g3">
             <div className="span2 rv"><Rows items={ABOUT.model} /></div>
-            <div className="rv d1 split-side split-side--right"><Media src={IMAGES.innovationModel} alt="A digital model of the human body surrounded by medical scans and data" pos="49% 40%" /></div>
+            <div className="rv d1 split-side split-side--right"><Media {...ABOUT.sectionImages.model} /></div>
           </div>
         </div>
       </Section>
@@ -54,7 +54,7 @@ export default function About() {
         <div className="wrap">
           <Head label={ECOSYSTEM.label} title={ECOSYSTEM.title} intro={ECOSYSTEM.intro} titleId="a4" />
           <div className="g3">
-            <div className="rv"><Media src={IMAGES.specializedProducts} alt="A glowing digital human figure rising from a smartphone screen" pos="50% 12%" /></div>
+            <div className="rv"><Media {...ABOUT.sectionImages.ecosystem} /></div>
             <div className="span2 rv d1"><Prose paras={ECOSYSTEM.text} /></div>
           </div>
         </div>
